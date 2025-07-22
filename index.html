@@ -4,14 +4,41 @@
   <meta charset="UTF-8" />
   <title>Min hjemmeside</title>
   <style>
+    @font-face {
+      font-family: 'Futura';
+      src: local('Futura'), url('Futura.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Futura', sans-serif;
       background-image: url('BG-J100.png');
       background-repeat: repeat;
-      background-size: auto; /* Beholder original størrelse */
+      background-size: auto;
       background-position: top left;
       cursor: crosshair;
     }
-</body>
-</html>
+
+    header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0); /* Gennemsigtig */
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      gap: 15px;
+    }
+
+    .logo {
+      height: 125px;
+      margin-right: auto;
+      cursor: pointer;
+    }
+
+    .btn-portfolio, .btn-contact {
+      padding: 10px 20px;
+      background-
