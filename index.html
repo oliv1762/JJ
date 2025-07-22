@@ -26,17 +26,12 @@
       justify-content: flex-end;
       align-items: flex-end;
       padding: 0 20px 10px 0;
-      background-color: rgba(255, 255, 255, 0); /* Start transparent */
+      background-color: rgba(255, 255, 255, 0.5); /* Halvgennemsigtig hvid */
+      backdrop-filter: blur(4px); /* Lidt blur */
       position: sticky;
       top: 0;
       z-index: 100;
       gap: 15px;
-      transition: background-color 0.3s ease;
-    }
-
-    header.scrolled {
-      background-color: white; /* Når man scroller */
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .logo {
@@ -70,11 +65,55 @@
       max-width: 900px;
       margin: 0 auto;
     }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-box {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      text-decoration: none;
+      overflow: hidden;
+      border: 3px solid black;
+      cursor: crosshair;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.3s ease;
+    }
+
+    .project-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.85);
+      color: black;
+      font-family: 'Futura', sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      border-top: 3px solid black;
+    }
+
+    .project-box:hover .project-image {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
 
-  <header id="mainHeader">
+  <header>
     <a href="index.html" style="margin-right: auto;">
       <img src="LOGO.png" alt="Logo" class="logo" />
     </a>
@@ -86,16 +125,21 @@
     <embed src="Portfolio%20-%20Oliver%20Juul%20Jensen.pdf" type="application/pdf" width="100%" height="600px" />
   </div>
 
-  <script>
-    const header = document.getElementById('mainHeader');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-  </script>
+  <div class="projects">
+    <a href="projekt1.html" class="project-box">
+      <div class="project-image" style="background-image: url('projekt1.jpg');"></div>
+      <div class="project-text">Projekt 1</div>
+    </a>
+    <a href="projekt2.html" class="project-box">
+      <div class="project-image" style="background-image: url('projekt2.jpg');"></div>
+      <div class="project-text">Projekt 2</div>
+    </a>
+    <a href="projekt3.html" class="project-box">
+      <div class="project-image" style="background-image: url('projekt3.jpg');"></div>
+      <div class="project-text">Projekt 3</div>
+    </a>
+    <!-- Du kan tilføje flere projekter her -->
+  </div>
 
 </body>
 </html>
