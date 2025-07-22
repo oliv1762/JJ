@@ -16,7 +16,7 @@
       font-family: 'Futura', sans-serif;
       background-image: url('BG-J100.png');
       background-repeat: repeat;
-      background-size: auto;
+      background-size: auto; /* Bevarer billedets originale størrelse */
       background-position: top left;
       cursor: crosshair;
     }
@@ -25,7 +25,7 @@
       display: flex;
       justify-content: flex-end;
       align-items: flex-end;
-      padding: 10px 20px;
+      padding: 0 20px 10px 0; /* Ingen venstre padding, så logo går helt til kanten */
       background-color: rgba(255, 255, 255, 0); /* Gennemsigtig */
       position: sticky;
       top: 0;
@@ -36,6 +36,8 @@
     .logo {
       height: 125px;
       margin-right: auto;
+      margin-left: 0;
+      display: block;
       cursor: crosshair;
     }
 
@@ -67,7 +69,7 @@
 <body>
 
   <header>
-    <a href="index.html">
+    <a href="index.html" style="margin-right: auto;">
       <img src="LOGO.png" alt="Logo" class="logo" />
     </a>
     <a href="portfolio.html" class="btn-portfolio">Portfolio</a>
