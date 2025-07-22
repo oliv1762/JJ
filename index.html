@@ -12,12 +12,6 @@
     }
 
     body {
-        margin: 0;
-  font-family: 'Futura', sans-serif;
-  background-image: url('BG-J100.png');
-  background-repeat: repeat;
-  background-position: top left;
-  background-size: auto; /* eller fjern denne linje helt */
       margin: 0;
       font-family: 'Futura', sans-serif;
       background-image: url('BG-J100.png');
@@ -31,12 +25,18 @@
       display: flex;
       justify-content: flex-end;
       align-items: flex-end;
-      padding: 0 20px 10px 0; /* Ingen venstre padding, så logo går helt til kanten */
-      background-color: rgba(255, 255, 255, 0); /* Gennemsigtig */
+      padding: 0 20px 10px 0;
+      background-color: rgba(255, 255, 255, 0); /* Start transparent */
       position: sticky;
       top: 0;
       z-index: 100;
       gap: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    header.scrolled {
+      background-color: white; /* Når man scroller */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .logo {
@@ -74,7 +74,7 @@
 </head>
 <body>
 
-  <header>
+  <header id="mainHeader">
     <a href="index.html" style="margin-right: auto;">
       <img src="LOGO.png" alt="Logo" class="logo" />
     </a>
@@ -85,6 +85,17 @@
   <div class="pdf-container">
     <embed src="Portfolio%20-%20Oliver%20Juul%20Jensen.pdf" type="application/pdf" width="100%" height="600px" />
   </div>
+
+  <script>
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
 
 </body>
 </html>
