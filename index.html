@@ -2,33 +2,11 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <!-- Gør siden mobilvenlig og tilpasser layout til skærmstørrelse -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Gør siden mobilvenlig -->
   <title>Min hjemmeside</title>
-  
+
   <style>
-    /* === FOOTER (LinkedIn-ikon) === */
-    .footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 0 20px 0;
-    }
-
-    .linkedin-icon {
-      width: 40px;
-      height: auto;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      cursor: crosshair;
-    }
-
-    .linkedin-icon:hover {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
-
-    /* === FONT === */
+    /* Import af font */
     @font-face {
       font-family: 'Futura';
       src: local('Futura'), url('Futura.woff2') format('woff2');
@@ -36,7 +14,20 @@
       font-style: normal;
     }
 
-    /* === BAGGRUND === */
+    /* Forhindrer uønsket horisontal scroll */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Futura', sans-serif;
+      cursor: crosshair;
+      position: relative;
+    }
+
+    /* Baggrundsbillede med gennemsigtighed */
     body::before {
       content: "";
       position: fixed;
@@ -45,40 +36,26 @@
       background-image: url('BG-J100.png');
       background-repeat: repeat;
       background-size: 100px 200px;
-      opacity: 0.2; /* semi-transparent mønster */
+      opacity: 0.2;
       z-index: -1;
-      pointer-events: none; /* så man kan klikke på indholdet ovenpå */
+      pointer-events: none;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Futura', sans-serif;
-      cursor: crosshair;
-    }
-
-    /* === HEADER WRAPPER (styrer margin og bredde) === */
-    .header-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 200px;
-      width: 100%;
-    }
-
-    /* === HEADER (navigation) === */
+    /* Sticky top-bar med knapper og logo */
     header {
       display: flex;
       justify-content: flex-end;
       align-items: flex-end;
-      padding: 0 0 10px 0;
-      background-color: transparent;
+      padding: 0 20px 10px 20px;
       position: sticky;
       top: 0;
+      background-color: transparent;
       z-index: 100;
       gap: 15px;
       transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
     }
 
-    /* Når man scroller ned */
+    /* Baggrund og blur når man scroller */
     header.scrolled {
       background-color: rgba(255, 255, 255, 0.5);
       backdrop-filter: blur(4px);
@@ -110,7 +87,7 @@
       color: white;
     }
 
-    /* === PROJEKTER GRID === */
+    /* Projekt-galleri */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -120,7 +97,6 @@
       margin: 0 auto;
     }
 
-    /* === HVER PROJEKTBOX === */
     .project-box {
       position: relative;
       aspect-ratio: 1 / 1;
@@ -156,37 +132,52 @@
       transform: scale(1.05);
     }
 
-    /* === MOBILVENLIGT DESIGN === */
-    @media (max-width: 768px) {
-      .header-wrapper {
-        padding: 0 20px;
-      }
+    /* Footer med LinkedIn-ikon */
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0 20px 0;
+    }
 
-      .projects {
-        grid-template-columns: 1fr; /* en søjle */
-        padding: 20px;
-      }
+    .linkedin-icon {
+      width: 40px;
+      height: auto;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      cursor: crosshair;
+    }
 
-      .btn-portfolio,
-      .btn-contact {
-        padding: 8px 12px;
-        font-size: 14px;
+    .linkedin-icon:hover {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+
+    /* Gør layoutet mere mobilvenligt */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
       }
 
       .logo {
         height: 80px;
+        margin-bottom: 10px;
       }
 
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+      .btn-portfolio, .btn-contact {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+
+      .project-text {
+        font-size: 16px;
       }
     }
   </style>
 
-  <!-- === SCRIPT til at scrolle headeren === -->
   <script>
+    // Giver headeren baggrund og blur, når man scroller
     window.addEventListener('scroll', function() {
       const header = document.querySelector('header');
       if (window.scrollY > 0) {
@@ -200,18 +191,16 @@
 
 <body>
 
-  <!-- === HEADER === -->
-  <div class="header-wrapper">
-    <header>
-      <a href="index.html" style="margin-right: auto;">
-        <img src="LOGO.png" alt="Logo" class="logo" />
-      </a>
-      <a href="portfolio.html" class="btn-portfolio">Portfolio</a>
-      <a href="kontakt.html" class="btn-contact">Kontakt</a>
-    </header>
-  </div>
+  <!-- Topbar med logo og navigation -->
+  <header>
+    <a href="index.html" style="margin-right: auto;">
+      <img src="LOGO.png" alt="Logo" class="logo" />
+    </a>
+    <a href="portfolio.html" class="btn-portfolio">Portfolio</a>
+    <a href="kontakt.html" class="btn-contact">Kontakt</a>
+  </header>
 
-  <!-- === PROJEKTER === -->
+  <!-- Projektbokse -->
   <div class="projects">
     <a href="projekt1.html" class="project-box">
       <div class="project-image" style="background-image: url('projekt1.jpg');"></div>
@@ -251,7 +240,7 @@
     </a>
   </div>
 
-  <!-- === FOOTER === -->
+  <!-- Footer med LinkedIn -->
   <footer class="footer">
     <a href="https://www.linkedin.com/in/LINK_TIL_DIN_LINKEDIN" target="_blank">
       <img src="LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
