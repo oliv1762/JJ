@@ -2,79 +2,83 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
+  <!-- Gør siden mobilvenlig og tilpasser layout til skærmstørrelse -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <title>Min hjemmeside</title>
+  
   <style>
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 0 20px 0;
-}
+    /* === FOOTER (LinkedIn-ikon) === */
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0 20px 0;
+    }
 
-.linkedin-icon {
-  width: 40px; /* justér størrelse efter ønske */
-  height: auto;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  cursor: crosshair;
-}
+    .linkedin-icon {
+      width: 40px;
+      height: auto;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      cursor: crosshair;
+    }
 
-.linkedin-icon:hover {
-  transform: scale(1.1);
-  opacity: 0.8;
-}
----------------------------------------------------------------------------------------------------------------------
+    .linkedin-icon:hover {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+
+    /* === FONT === */
     @font-face {
       font-family: 'Futura';
       src: local('Futura'), url('Futura.woff2') format('woff2');
       font-weight: normal;
       font-style: normal;
     }
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-image: url('BG-J100.png');
-  background-repeat: repeat;
-  background-size: 100px 200px;
-  opacity: 0.2; /* virker perfekt her */
-  z-index: -1;
-  pointer-events: none;
-}
-------------------------------------------------------------------------------------------
-<footer class="footer">
-  <a href="https://www.linkedin.com/in/LINK_TIL_DIN_LINKEDIN" target="_blank">
-    <img src="LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
-  </a>
-</footer>
+
+    /* === BAGGRUND === */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('BG-J100.png');
+      background-repeat: repeat;
+      background-size: 100px 200px;
+      opacity: 0.2; /* semi-transparent mønster */
+      z-index: -1;
+      pointer-events: none; /* så man kan klikke på indholdet ovenpå */
+    }
+
     body {
       margin: 0;
       font-family: 'Futura', sans-serif;
       cursor: crosshair;
     }
 
-/* Container der styrer bredde og margin */
-.header-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 200px;
-}
+    /* === HEADER WRAPPER (styrer margin og bredde) === */
+    .header-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 200px;
+      width: 100%;
+    }
 
-/* Din oprindelige header */
-header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding: 0 0 10px 0; /* padding til bund, ikke horisontalt – det styres af wrapper */
-  background-color: transparent;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  gap: 15px;
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-}
+    /* === HEADER (navigation) === */
+    header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 0 0 10px 0;
+      background-color: transparent;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      gap: 15px;
+      transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    }
 
-
+    /* Når man scroller ned */
     header.scrolled {
       background-color: rgba(255, 255, 255, 0.5);
       backdrop-filter: blur(4px);
@@ -106,12 +110,7 @@ header {
       color: white;
     }
 
-    .pdf-container {
-      padding: 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
+    /* === PROJEKTER GRID === */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -121,6 +120,7 @@ header {
       margin: 0 auto;
     }
 
+    /* === HVER PROJEKTBOX === */
     .project-box {
       position: relative;
       aspect-ratio: 1 / 1;
@@ -155,7 +155,37 @@ header {
     .project-box:hover .project-image {
       transform: scale(1.05);
     }
+
+    /* === MOBILVENLIGT DESIGN === */
+    @media (max-width: 768px) {
+      .header-wrapper {
+        padding: 0 20px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr; /* en søjle */
+        padding: 20px;
+      }
+
+      .btn-portfolio,
+      .btn-contact {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+
+      .logo {
+        height: 80px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
   </style>
+
+  <!-- === SCRIPT til at scrolle headeren === -->
   <script>
     window.addEventListener('scroll', function() {
       const header = document.querySelector('header');
@@ -168,19 +198,20 @@ header {
   </script>
 </head>
 
-  <!-- 	Alt det, der vises i browseren -->
 <body>
 
-  
-  <header>
-    <a href="index.html" style="margin-right: auto;">
-      <img src="LOGO.png" alt="Logo" class="logo" />
-    </a>
-    <a href="portfolio.html" class="btn-portfolio">Portfolio</a>
-    <a href="kontakt.html" class="btn-contact">Kontakt</a>
-  </header>
+  <!-- === HEADER === -->
+  <div class="header-wrapper">
+    <header>
+      <a href="index.html" style="margin-right: auto;">
+        <img src="LOGO.png" alt="Logo" class="logo" />
+      </a>
+      <a href="portfolio.html" class="btn-portfolio">Portfolio</a>
+      <a href="kontakt.html" class="btn-contact">Kontakt</a>
+    </header>
+  </div>
 
-  <!-- 	Projektbokse -->
+  <!-- === PROJEKTER === -->
   <div class="projects">
     <a href="projekt1.html" class="project-box">
       <div class="project-image" style="background-image: url('projekt1.jpg');"></div>
@@ -194,34 +225,38 @@ header {
       <div class="project-image" style="background-image: url('projekt3.jpg');"></div>
       <div class="project-text">Projekt 3</div>
     </a>
-     <a href="projekt4.html" class="project-box">
+    <a href="projekt4.html" class="project-box">
       <div class="project-image" style="background-image: url('projekt4.jpg');"></div>
       <div class="project-text">Projekt 4</div>
     </a>
-     <a href="projekt5.html" class="project-box">
+    <a href="projekt5.html" class="project-box">
       <div class="project-image" style="background-image: url('projekt5.jpg');"></div>
       <div class="project-text">Projekt 5</div>
     </a>
-      <a href="projekt6.html" class="project-box">
+    <a href="projekt6.html" class="project-box">
       <div class="project-image" style="background-image: url('projekt6.jpg');"></div>
       <div class="project-text">Projekt 6</div>
     </a>
-        </a>
-     <a href="projekt7.html" class="project-box">
+    <a href="projekt7.html" class="project-box">
       <div class="project-image" style="background-image: url('projekt7.jpg');"></div>
       <div class="project-text">Projekt 7</div>
     </a>
-     <a href="projekt8.html" class="project-box">
+    <a href="projekt8.html" class="project-box">
       <div class="project-image" style="background-image: url('projekt8.jpg');"></div>
       <div class="project-text">Projekt 8</div>
     </a>
-      <a href="projekt9.html" class="project-box">
+    <a href="projekt9.html" class="project-box">
       <div class="project-image" style="background-image: url('projekt9.jpg');"></div>
       <div class="project-text">Projekt 9</div>
     </a>
   </div>
 
-  
+  <!-- === FOOTER === -->
+  <footer class="footer">
+    <a href="https://www.linkedin.com/in/LINK_TIL_DIN_LINKEDIN" target="_blank">
+      <img src="LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
+    </a>
+  </footer>
+
 </body>
-  
 </html>
