@@ -4,6 +4,28 @@
   <meta charset="UTF-8" />
   <title>Min hjemmeside</title>
   <style>
+    
+------------------------------------linkedin------------------------------------------
+    
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0 20px 0;
+}
+
+.linkedin-icon {
+  width: 40px; /* justér størrelse efter ønske */
+  height: auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: crosshair;
+}
+
+.linkedin-icon:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+---------------------------------------------------------------------------------------------------------------------
     @font-face {
       font-family: 'Futura';
       src: local('Futura'), url('Futura.woff2') format('woff2');
@@ -22,6 +44,12 @@ body::before {
   z-index: -1;
   pointer-events: none;
 }
+------------------------------------------------------------------------------------------
+<footer class="footer">
+  <a href="https://www.linkedin.com/in/LINK_TIL_DIN_LINKEDIN" target="_blank">
+    <img src="LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
+  </a>
+</footer>
     body {
       margin: 0;
       font-family: 'Futura', sans-serif;
