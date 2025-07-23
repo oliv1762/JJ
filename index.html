@@ -28,18 +28,27 @@ body::before {
       cursor: crosshair;
     }
 
-    header {
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-      padding: 0 20px 10px 0;
-      background-color: transparent;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      gap: 15px;
-      transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-    }
+/* Container der styrer bredde og margin */
+.header-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Din oprindelige header */
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0 0 10px 0; /* padding til bund, ikke horisontalt – det styres af wrapper */
+  background-color: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 15px;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
 
     header.scrolled {
       background-color: rgba(255, 255, 255, 0.5);
