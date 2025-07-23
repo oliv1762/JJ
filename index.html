@@ -143,6 +143,17 @@
       justify-content: center;
       align-items: center;
       padding: 40px 0 20px 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;  /* Helt hvid baggrund */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Let skygge over footeren */
+      z-index: 1000;
     }
 
     .linkedin-icon {
@@ -156,6 +167,9 @@
       transform: scale(1.1);
       opacity: 0.8;
     }
+
+
+
 
     /* Gør layoutet mere mobilvenligt */
     @media (max-width: 600px) {
