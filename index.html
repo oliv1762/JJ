@@ -26,12 +26,17 @@
       justify-content: flex-end;
       align-items: flex-end;
       padding: 0 20px 10px 0;
-      background-color: rgba(255, 255, 255, 0.5); /* Halvgennemsigtig hvid */
-      backdrop-filter: blur(4px); /* Lidt blur */
+      background-color: transparent;
       position: sticky;
       top: 0;
       z-index: 100;
       gap: 15px;
+      transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    }
+
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(4px);
     }
 
     .logo {
@@ -110,6 +115,16 @@
       transform: scale(1.05);
     }
   </style>
+  <script>
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 0) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
 </head>
 <body>
 
@@ -138,7 +153,6 @@
       <div class="project-image" style="background-image: url('projekt3.jpg');"></div>
       <div class="project-text">Projekt 3</div>
     </a>
-    <!-- Du kan tilføje flere projekter her -->
   </div>
 
 </body>
