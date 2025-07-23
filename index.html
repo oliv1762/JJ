@@ -41,16 +41,16 @@
       pointer-events: none;
     }
 
-    /* Sticky top-bar med knapper og logo */
+    /* fixed top-bar med knapper og logo */
     header {
       display: flex;
       justify-content: flex-end;
       align-items: flex-end;
       padding: 0 20px 10px 20px;
-      position: sticky;
+      position: fixed; top: 0;
       top: 0;
       background-color: transparent;
-      z-index: 100;
+      z-index: 1000;
       gap: 15px;
       transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
     }
@@ -91,9 +91,8 @@
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 100px;                      /* Øget afstand mellem bokse */
-      padding: 200px 200px;             /* Mere luft til kanterne */
-      max-width: 1400px;              /* Gør den samlede bredde lidt bredere */
+      gap: 25px;                      /* Øget afstand mellem bokse */
+      padding: 100px 100px;             /* Mere luft til kanterne */
       margin: 0 auto;                 /* Centrer grid'en på siden */
     }
 
