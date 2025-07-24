@@ -21,7 +21,27 @@
       margin: 0 auto;
      
     }
-    
+    .header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  max-width: 300px; /* Justér efter behov */
+  font-family: 'Futura', sans-serif;
+  font-size: 16px;
+  padding-left: 20px;
+}
+
+.line1 {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.line2 {
+  font-size: 14px;
+  color: #555;
+}
+
     /* Forhindrer uønsket horisontal scroll */
     html, body {
       margin: 0;
@@ -231,9 +251,15 @@
   <!-- Topbar med logo og navigation -->
 <div class="header-wrapper">
   <header>
+    
     <a href="index.html" style="margin-right: auto;">
       <img src="BG-OJJ-21.png" alt="Logo" class="logo" />
     </a>
+
+    <div class="header-text">
+    <div class="line1">Din overskrift her</div>
+    <div class="line2">Din undertekst her</div>
+  </div>
   
   </header>
 </div>
