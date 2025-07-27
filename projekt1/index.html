@@ -196,7 +196,12 @@
       padding: 100px 100px;
       align-items: flex-start;
     }
-
+.content-section hr {
+  border: none;           /* Fjern standard kant */
+  border-top: 2px solid black; /* Lav en sort, 2px tyk linje */
+  margin: 15px 0;         /* Luft over og under linjen */
+  width: 50px;            /* Bredden på linjen (kan justeres) */
+}
     .text-content {
       flex: 1;
       font-family: 'Futura', sans-serif;
@@ -357,6 +362,7 @@
 <section class="content-section">
     <div class="text-content">
       <h1>Projektets Titel</h1>
+      <hr />
       <p>
         Montagecirkulæret fra 1960´erne gjorde det muligt hurtigt at opfylde efterkrigstidens behov for almene boliger.
 Dog havde denne rationalisering af byggebranchen også negativ effekt.
