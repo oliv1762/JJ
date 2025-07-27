@@ -2,10 +2,9 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Gør siden mobilvenlig -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Min hjemmeside</title>
 
-  
   <style>
     /* Import af font */
     @font-face {
@@ -14,49 +13,17 @@
       font-weight: normal;
       font-style: normal;
     }
-     /* Bestemmer topbar og luft */
-    .header-wrapper {
- 
-      margin: 0 auto;
-    }
-    .header-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 300px; /* Justér efter behov */
-  font-family: 'Futura', sans-serif;
-  font-size: 16px;
-  gap: 1.9px;
-}
-                                                                      
-    
- body {
-      font-family: 'Futura', sans-serif;
-      cursor: crosshair;
-      background-color: white;
-    }
-.line1 {
-  font-weight: bold;
-  font-size: 16px;
-}
 
-.line2 {
-  font-size: 12px;
-  color: #555;
-}
-
-    /* Forhindrer uønsket horisontal scroll */
+    /* Grundlæggende reset og body */
     html, body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-    }
-
-    body {
-     
       font-family: 'Futura', sans-serif;
+      background-color: white;
       cursor: crosshair;
       position: relative;
+      min-height: 100vh;
     }
 
     /* Baggrundsbillede med gennemsigtighed */
@@ -73,54 +40,77 @@
       pointer-events: none;
     }
 
-    /* fixed top-bar*/
+    /* Wrapper for header med max-width og centreret */
+    .header-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
     header {
-      left: 0;          /* Vigtigt: starter helt til venstre */
-      width: 100%;      /* Fylder hele bredden */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+
+      /* For at centrere indholdet i max 1200px */
       display: flex;
       align-items: flex-end;
-      padding: 20px 100px 20px 100px;                                                 /* afstand i hvid boks  */
-      top: 0;
-      background-color: white; /* Permanent hvid baggrund */
-      z-index: 1000;
+      padding: 20px 20px;
+      justify-content: flex-start;
       gap: 15px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Let skygge under headeren */
+    }
+
+    /* Indhold i header - max bredde som header-wrapper */
+    header > a, 
+    header > .header-text {
+      max-width: 1200px;
     }
 
     .logo {
       height: 110px;
       cursor: crosshair;
-     user-select: none;
+      user-select: none;
       -webkit-user-drag: none;
     }
 
-    .btn-portfolio, .btn-contact {
-      padding: 10px 20px;
-      background-color: white;
-      color: black;
-      border: 3px solid black;
-      border-radius: 0;
-      text-decoration: none;
-      font-weight: bold;
+    .header-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
       font-size: 16px;
-      cursor: crosshair;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      gap: 1.9px;
     }
 
-    .btn-portfolio:hover, .btn-contact:hover {
-      background-color: black;
-      color: white;
+    .line1 {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .line2 {
+      font-size: 12px;
+      color: #555;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     /* Projekt-galleri */
     .projects {
+      max-width: 1200px;
+      margin: 140px auto 0 auto; /* margin-top for at komme under headeren */
+      padding: 50px 20px 100px 20px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;                      /* Øget afstand mellem bokse */
-      padding: 100px 100px;             /* Mere luft til kanterne */
-      margin: 0 auto;                 /* Centrer grid'en på siden */
+      gap: 25px;
     }
-    
+
     .project-box {
       position: relative;
       aspect-ratio: 1 / 1;
@@ -128,8 +118,8 @@
       overflow: hidden;
       border: 0.5px solid black;
       cursor: crosshair;
-       background-color: white; /* Gør baggrunden hvid */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tilføj skygge */
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
@@ -146,7 +136,7 @@
       bottom: 0;
       width: 100%;
       padding: 10px;
-      background-color: rgba(255, 255, 255, 0.85);
+      background-color: rgba(255,255,255,0.85);
       color: black;
       font-family: 'Futura', sans-serif;
       font-size: 20px;
@@ -159,41 +149,14 @@
       transform: scale(1.05);
     }
 
-    /* Footer med LinkedIn-ikon */
-    .footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 0 20px 0;
-     
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: white;  /* Helt hvid baggrund */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Let skygge over footeren */
-      z-index: 1000;
-    }
-
-    .linkedin-icon {
-      width: 40px;
-      height: auto;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      cursor: crosshair;
-    }
-
-    .linkedin-icon:hover {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
+    /* Sektion med tekst og galleri */
     .content-section {
+      max-width: 1200px;
+      margin: 80px auto 80px auto; /* luft over og under */
+      padding: 40px 20px;
       display: flex;
       justify-content: space-between;
       gap: 50px;
-      padding: 100px 100px;
       align-items: flex-start;
     }
 
@@ -211,6 +174,7 @@
       font-size: 16px;
       line-height: 1.6;
       color: #333;
+      white-space: pre-line; /* Hvis du vil have linjeskift i tekst */
     }
 
     .image-gallery {
@@ -256,64 +220,92 @@
       right: 0;
     }
 
-
-
-    /* ---------------------------------------------------------------------Gør layoutet mere mobilvenligt */
-    @media (max-width: 600px) {                                            
-  .projects {
-      padding: 50px 50px;             /* Mere luft til kanterne */
+    /* Footer */
+    .footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px 20px;
+      background-color: white;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: default;
     }
-      header {                                                              
-        flex-direction: row;                                              
-        align-items: center;                                                
-        padding-left: 30px;                                           
-        padding-right: 30px;                                                  
-      }  
-          .header-text {
-  align-self: flex-end;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  font-family: 'Futura', sans-serif;
-  font-size: 8px;
-  gap: 0.85px;
-}
 
-.line1 {
-  font-weight: bold;
-  font-size: 8px;
-}
-
-.line2 {
-  font-size: 6px;
-  color: #555;
-}
-       .logo {
-      height: 55px;
-      display: block;
+    .linkedin-icon {
+      width: 40px;
+      height: auto;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      cursor: crosshair;
     }
-  .projects {                                                                    /* ---------------------------------------*/
-    padding-left: 30px;                                                                /* ---------------------------------------*/
-    padding-right: 30px;                                                                  /* ---------------------------------------*/
-    gap: 15px;          /* Mindre mellemrum mellem bokse */                                        /* ---------------------------------------*/
-  }                                                                                          /* ---------------------------------------*/
-                                                                                  /* ---------------------------------------*/
-  .project-text {                                                                  /* ---------------------------------------*/
-    font-size: 16px; /* Mindre tekst på mobil */                                        /* ---------------------------------------*/
-  }                                                                                  /* ---------------------------------------*/
-                                                                                    /* ---------------------------------------*/
-                                                                                    /* ---------------------------------------*/                                                                     /* ---------------------------------------*/
-      .btn-portfolio, .btn-contact {                                                      /* ---------------------------------------*/
-        font-size: 14px;                                                            /* ---------------------------------------*/
-        padding: 8px 16px;                                                        /* ---------------------------------------*/
-      }                                                                          /* ---------------------------------------*/
-      .project-text {                                                            /* ---------------------------------------*/
-        font-size: 16px;                                                    /* ---------------------------------------*/
-      }   
-        
-     .content-section {
+
+    .linkedin-icon:hover {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+
+    /* Knapper */
+    .btn-portfolio, .btn-contact {
+      padding: 10px 20px;
+      background-color: white;
+      color: black;
+      border: 3px solid black;
+      border-radius: 0;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: crosshair;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn-portfolio:hover, .btn-contact:hover {
+      background-color: black;
+      color: white;
+    }
+
+    /* Responsive design for mobil */
+    @media (max-width: 600px) {
+      .header-wrapper, .content-section, .projects, .footer {
+        max-width: 100%;
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      header {
+        flex-direction: row;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+
+      .logo {
+        height: 55px;
+      }
+
+      .header-text {
+        font-size: 8px;
+        gap: 0.85px;
+      }
+
+      .line1 {
+        font-weight: bold;
+        font-size: 8px;
+      }
+
+      .line2 {
+        font-size: 6px;
+      }
+
+      .content-section {
         flex-direction: column;
-        padding: 50px 30px;
+        gap: 20px;
+        padding: 40px 10px 60px 10px;
+        margin-top: 100px;
       }
 
       .text-content h1 {
@@ -327,60 +319,69 @@
       .gallery-image {
         max-height: 250px;
       }
-    }                                                             /* ---------------------------------------*/
-    }                                                                         /* ---------------------------------------*/
-     /* ---------------------------------------------------------------------Gør layoutet mere mobilvenligt */
+
+      .btn-portfolio, .btn-contact {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+
+      .project-text {
+        font-size: 16px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 50px 20px;
+        margin-top: 140px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <!-- Topbar med logo og navigation -->
-<div class="header-wrapper">
-  <header>
-    
-    <a href="..//index.html">
-      <img src="../LOGO-T-21.png" alt="Logo" class="logo" />
-    </a>
-    <div class="header-text">
-    <div class="line1">Cand Aarch MAA, Byplanlægger</div>
-    <div class="line2">Oliver Juul Jensen</div>
-    <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk"style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
-    <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
-    
+  <div class="header-wrapper">
+    <header>
+      <a href="../index.html">
+        <img src="../LOGO-T-21.png" alt="Logo" class="logo" />
+      </a>
+      <div class="header-text">
+        <div class="line1">Cand Aarch MAA, Byplanlægger</div>
+        <div class="line2">Oliver Juul Jensen</div>
+        <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk">oliverjuuljensen@yahoo.dk</a></div>
+        <div class="line2">Tlf: <a href="tel:+4528499459">28 49 94 59</a></div>
+      </div>
+    </header>
   </div>
-  
-  </header>
-</div>
 
-
-<section class="content-section">
+  <!-- Content sektion med tekst og galleri -->
+  <section class="content-section">
     <div class="text-content">
       <h1>Projektets Titel</h1>
       <p>
         Montagecirkulæret fra 1960´erne gjorde det muligt hurtigt at opfylde efterkrigstidens behov for almene boliger.
-Dog havde denne rationalisering af byggebranchen også negativ effekt.
-Den formåede ikke at tage højde for den menneskelige skala.
-Dette afgangsprojekt stiller spørgsmålet:
-Hvordan kan man i et alment boligområde fra 1960´erne skabe vedkommende uderum på tværs af naboskaber.
-I arbejdet med dette projekt har været guidet af en række værdier, der har været essentielle både tilgangen og for det endelige resultat. De centrale værdier i mit projekt har været menneskelig skala, som skaber intime, trygge rum for beboerne, og fællesskab, hvor sociale relationer er grundlaget for et dynamisk byliv.
-For at opnå dette, er forebyggelsesområdet (Reseda- og Lupinvej ) bearbejdet i fire skaler - fire forskellige former for naboskab af rumlig karakter i varrierende skala:
-S,M,L og XL.
+        Dog havde denne rationalisering af byggebranchen også negativ effekt.
+        Den formåede ikke at tage højde for den menneskelige skala.
+        Dette afgangsprojekt stiller spørgsmålet:
+        Hvordan kan man i et alment boligområde fra 1960´erne skabe vedkommende uderum på tværs af naboskaber.
+        I arbejdet med dette projekt har været guidet af en række værdier, der har været essentielle både tilgangen og for det endelige resultat. De centrale værdier i mit projekt har været menneskelig skala, som skaber intime, trygge rum for beboerne, og fællesskab, hvor sociale relationer er grundlaget for et dynamisk byliv.
+        For at opnå dette, er forebyggelsesområdet (Reseda- og Lupinvej) bearbejdet i fire skaler - fire forskellige former for naboskab af rumlig karakter i varrierende skala: S, M, L og XL.
       </p>
     </div>
 
     <div class="image-gallery">
       <button class="gallery-btn prev">&#10094;</button>
-      <img src="../billede1.jpg" alt="Galleri billede" class="gallery-image">
+      <img src="../billede1.jpg" alt="Galleri billede" class="gallery-image" />
       <button class="gallery-btn next">&#10095;</button>
     </div>
   </section>
 
-
   <!-- Footer med LinkedIn -->
   <footer class="footer">
-    <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
-      <img src="..//LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
+    <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank" rel="noopener noreferrer">
+      <img src="../LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon" />
     </a>
   </footer>
 
