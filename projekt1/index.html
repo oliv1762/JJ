@@ -29,12 +29,18 @@
   gap: 1.9px;
 }
                                                                       
-    
- body {
-      font-family: 'Futura', sans-serif;
-      cursor: crosshair;
-      background-color: white;
-    }
+  .full-width-image-wrapper {
+  max-width: 1200px;    /* Samme max bredde som content-section */
+  margin: 0 auto;       /* Centrerer horisontalt */
+  padding: 0 20px;      /* Samme luft til sider som content-section */
+  box-sizing: border-box;
+}
+
+.full-width-image-wrapper img {
+  width: 100%;          /* Fylder hele bredden af wrapperen */
+  height: auto;         /* Bevarer proportioner */
+  display: block;       /* Fjerner evt. luft under billedet */
+}  
 .line1 {
   font-weight: bold;
   font-size: 16px;
@@ -53,7 +59,7 @@
     }
 
     body {
-     
+      background-color: white;
       font-family: 'Futura', sans-serif;
       cursor: crosshair;
       position: relative;
@@ -382,7 +388,10 @@ S,M,L og XL.
     </div>
   </section>
 
-
+<div class="full-width-image-wrapper">
+  <img src="../dit-billede.jpg" alt="Billede" />
+</div>
+  
   <!-- Footer med LinkedIn -->
   <footer class="footer">
     <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
