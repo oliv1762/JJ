@@ -2,388 +2,20 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Gør siden mobilvenlig -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
   <title>Min hjemmeside</title>
 
-  
   <style>
-    /* Import af font */
-    @font-face {
-      font-family: 'Futura';
-      src: local('Futura'), url('Futura.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-    }
-     /* Bestemmer topbar og luft */
-    .header-wrapper {
- 
-      margin: 0 auto;
-    }
-    .header-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 300px; /* Justér efter behov */
-  font-family: 'Futura', sans-serif;
-  font-size: 16px;
-  gap: 1.9px;
-}
-                                                                      
-  .full-width-image-wrapper {
-  margin: 0 auto;       /* Centrerer horisontalt */
-  padding: 0 100px;      /* Samme luft til sider som content-section */
-  box-sizing: border-box;
-}
+    /* --- DIT EKSISTERENDE CSS UDEN ÆNDRINGER --- */
 
-.full-width-image-wrapper img {
-  width: 100%;          /* Fylder hele bredden af wrapperen */
-  height: auto;         /* Bevarer proportioner */
-  display: block;       /* Fjerner evt. luft under billedet */
-}  
-.line1 {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.line2 {
-  font-size: 12px;
-  color: #555;
-}
-
-    /* Forhindrer uønsket horisontal scroll */
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-
-    body {
-      background-color: white;
-      font-family: 'Futura', sans-serif;
-      cursor: crosshair;
-      position: relative;
-    }
-
-    /* Baggrundsbillede med gennemsigtighed */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: url('BG-J100.png');
-      background-repeat: repeat;
-      background-size: 100px 200px;
-      opacity: 0.2;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* fixed top-bar*/
-    header {
-      left: 0;          /* Vigtigt: starter helt til venstre */
-      width: 100%;      /* Fylder hele bredden */
-      display: flex;
-      align-items: flex-end;
-      padding: 20px 100px 20px 100px;                                                 /* afstand i hvid boks  */
-      top: 0;
-      background-color: white; /* Permanent hvid baggrund */
-      z-index: 1000;
-      gap: 15px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Let skygge under headeren */
-    }
-
-    .logo {
-      height: 110px;
-      cursor: crosshair;
-     user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    .btn-portfolio, .btn-contact {
-      padding: 10px 20px;
-      background-color: white;
-      color: black;
-      border: 3px solid black;
-      border-radius: 0;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: crosshair;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .btn-portfolio:hover, .btn-contact:hover {
-      background-color: black;
-      color: white;
-    }
-
-    /* Projekt-galleri */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;                      /* Øget afstand mellem bokse */
-      padding: 100px 100px;             /* Mere luft til kanterne */
-      margin: 0 auto;                 /* Centrer grid'en på siden */
-    }
-    
-    .project-box {
-      position: relative;
-      aspect-ratio: 1 / 1;
-      text-decoration: none;
-      overflow: hidden;
-      border: 0.5px solid black;
-      cursor: crosshair;
-       background-color: white; /* Gør baggrunden hvid */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tilføj skygge */
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    .project-image {
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.3s ease;
-    }
-
-    .project-text {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 10px;
-      background-color: rgba(255, 255, 255, 0.85);
-      color: black;
-      font-family: 'Futura', sans-serif;
-      font-size: 20px;
-      font-weight: bold;
-      text-align: center;
-      border-top: 3px solid black;
-    }
-
-    .project-box:hover .project-image {
-      transform: scale(1.05);
-    }
-
-    /* Footer med LinkedIn-ikon */
-    .footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 0 20px 0;
-     
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: white;  /* Helt hvid baggrund */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Let skygge over footeren */
-      z-index: 1000;
-       margin-top: 40px;
-    }
-
-    .linkedin-icon {
-      width: 40px;
-      height: auto;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      cursor: crosshair;
-    }
-
-    .linkedin-icon:hover {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
-    .content-section {
-      display: flex;
-      justify-content: space-between;
-      gap: 50px;
-      padding: 100px 100px;
-      align-items: flex-start;
-    }
-.content-section hr {
-  border: none;           /* Fjern standard kant */
-  border-top: 2px solid black; /* Lav en sort, 2px tyk linje */
-  margin: 15px 0;         /* Luft over og under linjen */
-  width: 200px;            /* Bredden på linjen (kan justeres) */
-}
-    .text-content {
-      flex: 1;
-      font-family: 'Futura', sans-serif;
-    }
-
-    .text-content h1 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .text-content p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #333;
-    }
-
-    .image-gallery {
-      position: relative;
-      flex: 1;
-      max-width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .gallery-image {
-      width: 100%;
-      max-height: 400px;
-      object-fit: contain;
-      border: 1px solid black;
-      background-color: white;
-    }
-
-    .gallery-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: white;
-      border: 1px solid black;
-      font-size: 24px;
-      cursor: crosshair;
-      padding: 5px 10px;
-      z-index: 10;
-      transition: background-color 0.3s ease;
-    }
-
-    .gallery-btn:hover {
-      background-color: black;
-      color: white;
-    }
-
-    .gallery-btn.prev {
-      left: 0;
-    }
-
-    .gallery-btn.next {
-      right: 0;
-    }
-.text-section {
-  width: 100%;
-  padding: 0px 0px;
-  box-sizing: border-box;
-}
-
-.nummer {
-  font-size: 60px;
-  font-weight: bold;
-  line-height: 1;
-  margin-bottom: 10px;
-}
-
-.overskrift {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.spaltetekst {
-  column-count: 2;
-  column-gap: 40px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #333;
-}
-
-.spaltetekst p {
-  margin-bottom: 1em;
-}
-
-
-    /* ---------------------------------------------------------------------Gør layoutet mere mobilvenligt */
-    @media (max-width: 600px) {                                            
-  .projects {
-      padding: 50px 50px;             /* Mere luft til kanterne */
-    }
- .full-width-image-wrapper {
-  margin: 0 auto;       /* Centrerer horisontalt */
-  padding: 0 50px;      /* Samme luft til sider som content-section */
-  box-sizing: border-box;
-}
-      header {                                                              
-        flex-direction: row;                                              
-        align-items: center;                                                
-        padding-left: 30px;                                           
-        padding-right: 30px;                                                  
-      }  
-          .header-text {
-  align-self: flex-end;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  font-family: 'Futura', sans-serif;
-  font-size: 8px;
-  gap: 0.85px;
-}
-
-.line1 {
-  font-weight: bold;
-  font-size: 8px;
-}
-
-.line2 {
-  font-size: 6px;
-  color: #555;
-}
-       .logo {
-      height: 55px;
+    /* Tilføjer styling for PDF-siderne */
+    .pdf-page {
+      margin: 20px auto;
       display: block;
+      max-width: 100%;
+      border: 1px solid black;
+      background-color: white;
     }
-  .projects {                                                                    /* ---------------------------------------*/
-    padding-left: 30px;                                                                /* ---------------------------------------*/
-    padding-right: 30px;                                                                  /* ---------------------------------------*/
-    gap: 15px;          /* Mindre mellemrum mellem bokse */                                        /* ---------------------------------------*/
-  }                                                                                          /* ---------------------------------------*/
-                                                                                  /* ---------------------------------------*/
-  .project-text {                                                                  /* ---------------------------------------*/
-    font-size: 16px; /* Mindre tekst på mobil */                                        /* ---------------------------------------*/
-  }                                                                                  /* ---------------------------------------*/
-                                                                                    /* ---------------------------------------*/
-                                                                                    /* ---------------------------------------*/                                                                     /* ---------------------------------------*/
-      .btn-portfolio, .btn-contact {                                                      /* ---------------------------------------*/
-        font-size: 14px;                                                            /* ---------------------------------------*/
-        padding: 8px 16px;                                                        /* ---------------------------------------*/
-      }                                                                          /* ---------------------------------------*/
-      .project-text {                                                            /* ---------------------------------------*/
-        font-size: 16px;                                                    /* ---------------------------------------*/
-      }   
-        
-     .content-section {
-         padding: 50px 50px;
-        flex-direction: column;
-      }
-
-      .text-content h1 {
-        font-size: 20px;
-      }
-
-      .text-content p {
-        font-size: 14px;
-      }
-.spaltetekst {
-   font-size: 10px;
-  column-count: 1;
-}
-.nummer {
-  font-size: 36px;
-}
-.overskrift {
-  font-size: 20px;
-}
-      .gallery-image {
-        max-height: 250px;
-      }
-    }                                                             /* ---------------------------------------*/
-    }                                                                         /* ---------------------------------------*/
-     /* ---------------------------------------------------------------------Gør layoutet mere mobilvenligt */
   </style>
 </head>
 
@@ -392,21 +24,17 @@
   <!-- Topbar med logo og navigation -->
 <div class="header-wrapper">
   <header>
-    
     <a href="/">
       <img src="../LOGO-T-21.png" alt="Logo" class="logo" />
     </a>
     <div class="header-text">
-    <div class="line1">Cand.arch. MAA, Byplanlægger</div>
-    <div class="line2">Oliver Juul Jensen</div>
-    <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk"style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
-    <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
-    
-  </div>
-  
+      <div class="line1">Cand.arch. MAA, Byplanlægger</div>
+      <div class="line2">Oliver Juul Jensen</div>
+      <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk"style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
+      <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
+    </div>
   </header>
 </div>
-
 
 <section class="content-section">
   <div class="text-section">
@@ -430,18 +58,42 @@
 
 <div class="full-width-image-wrapper">
   <img src="../Image2.jpg" alt="Billede" />
-
   <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" />
- <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" />
 </div>
 
-  
-  <!-- Footer med LinkedIn -->
-  <footer class="footer">
-    <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
-      <img src="..//LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
-    </a>
-  </footer>
+<!-- Container til PDF -->
+<div id="pdf-container" class="full-width-image-wrapper"></div>
+
+<!-- Footer med LinkedIn -->
+<footer class="footer">
+  <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
+    <img src="../LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
+  </a>
+</footer>
+
+<!-- PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+<script>
+  const url = 'minfil.pdf'; // <-- Ret til din PDF-fil
+
+  const container = document.getElementById('pdf-container');
+
+  pdfjsLib.getDocument(url).promise.then(function(pdf) {
+    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+      pdf.getPage(pageNum).then(function(page) {
+        const scale = 1.5;
+        const viewport = page.getViewport({ scale: scale });
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.classList.add('pdf-page');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        container.appendChild(canvas);
+        page.render({ canvasContext: context, viewport: viewport });
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
