@@ -434,63 +434,6 @@
   <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" />
  <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" />
 
-<div id="pdf-container" style="width: 100%; max-width: 800px; margin: 0 auto; border: 1px solid #ccc;"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
-<script>
-  const url = 'minfil.pdf';
-  const container = document.getElementById('pdf-container');
-  let pdfDoc = null;
-
-  // Funktion der render siderne med korrekt skala
-  function renderPages() {
-    if (!pdfDoc) return;
-
-    // Ryd container (hvis der allerede er sider)
-    container.innerHTML = '';
-
-    const containerWidth = container.clientWidth;
-
-    for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-      pdfDoc.getPage(pageNum).then(function(page) {
-        const viewport = page.getViewport({ scale: 1 }); // oprindelig størrelse
-        const scale = containerWidth / viewport.width;
-        const scaledViewport = page.getViewport({ scale: scale });
-
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-
-        canvas.width = scaledViewport.width;
-        canvas.height = scaledViewport.height;
-
-        canvas.style.display = 'block';
-        canvas.style.margin = '20px auto';
-
-        container.appendChild(canvas);
-
-        page.render({
-          canvasContext: context,
-          viewport: scaledViewport
-        });
-      });
-    }
-  }
-
-  // Load pdf dokumentet
-  pdfjsLib.getDocument(url).promise.then(function(pdf) {
-    pdfDoc = pdf;
-    renderPages();
-  });
-
-  // Re-render når vinduet ændrer størrelse (debounced for performance)
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      renderPages();
-    }, 300);
-  });
-</script>
 
 </div>
 
