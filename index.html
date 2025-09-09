@@ -2,10 +2,9 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Gør siden mobilvenlig -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OJJ - Portfolio</title>
 
-  
   <style>
     /* Import af font */
     @font-face {
@@ -14,39 +13,43 @@
       font-weight: normal;
       font-style: normal;
     }
+
+    /* Projekttitel */
     .projects-title {
-    font-family: 'Futura', sans-serif;
-  font-size: 32px;
-  font-weight: bold;
-  text-align: left;       /* stå til venstre */
-  margin: 0 auto 30px;    /* afstand til grid’et */
-  max-width: 1200px;      /* samme bredde som grid’en */
-  padding-left: 100px;    /* samme som projekterne padding */
+      font-family: 'Futura', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      text-align: left;
+      margin: 0 auto 30px;
+      max-width: 1200px;
+      padding-left: 60px;
     }
-     /* Bestemmer topbar og luft */
+
+    /* Bestemmer topbar og luft */
     .header-wrapper {
       max-width: 1200px;
       margin: 0 auto;
     }
+
     .header-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 300px; /* Justér efter behov */
-  font-family: 'Futura', sans-serif;
-  font-size: 16px;
-  gap: 1.9px;
-}
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      font-family: 'Futura', sans-serif;
+      font-size: 16px;
+      gap: 1.9px;
+    }
 
-.line1 {
-  font-weight: bold;
-  font-size: 16px;
-}
+    .line1 {
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-.line2 {
-  font-size: 12px;
-  color: #555;
-}
+    .line2 {
+      font-size: 12px;
+      color: #555;
+    }
 
     /* Forhindrer uønsket horisontal scroll */
     html, body {
@@ -76,26 +79,23 @@
       pointer-events: none;
     }
 
-    /* fixed top-bar*/
+    /* Fixed top-bar */
     header {
-      left: 0;          /* Vigtigt: starter helt til venstre */
-      width: 100%;      /* Fylder hele bredden */
+      left: 0;
+      width: 100%;
       display: flex;
       align-items: flex-end;
-      padding: 20px 60px 20px 60px;                                                 /* afstand i hvid boks  */
+      padding: 20px 60px;
       position: fixed; top: 0;
-      top: 0;
-      background-color: white; /* Permanent hvid baggrund */
+      background-color: white;
       z-index: 1000;
       gap: 15px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Let skygge under headeren */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
-
 
     .logo {
       height: 110px;
       cursor: crosshair;
-     
     }
 
     .btn-portfolio, .btn-contact {
@@ -120,20 +120,22 @@
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;                      /* Øget afstand mellem bokse */
-      padding: 60px 60px;             /* Mere luft til kanterne */
-      margin: 0 auto;                 /* Centrer grid'en på siden */
+      gap: 25px;
+      padding: 60px 60px;
+      margin: 0 auto;
     }
-    
+
+    .project-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
     .project-box {
-      position: relative;
-      aspect-ratio: 4 / 3;
-      text-decoration: none;
+      width: 100%;
+      height: 250px;
+      background-color: white;
       overflow: hidden;
-      border: 0px solid black;
-      cursor: crosshair;
-       background-color: white; /* Gør baggrunden hvid */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tilføj skygge ligesom header/footer */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
@@ -145,22 +147,19 @@
       transition: transform 0.3s ease;
     }
 
-    .project-text {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 10px;
-      background-color: white;
-      color: black;
-      font-family: 'Futura', sans-serif;
-      font-size: 20px;
-      font-weight: bold;
-      text-align: left;
-      border-top: 2px solid #555
-    }
-
     .project-box:hover .project-image {
       transform: scale(1.05);
+    }
+
+    .project-text {
+      background-color: #ffffff;
+      text-align: left;
+      padding: 10px 15px;
+      border-top: 2px solid #555;
+      font-family: 'Futura', sans-serif;
+      font-weight: bold;
+      font-size: 20px;
+      margin-top: 5px;
     }
 
     /* Footer med LinkedIn-ikon */
@@ -168,17 +167,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 40px 0 20px 0;
-     
+      padding: 15px 0;
       bottom: 0;
       left: 0;
       width: 100%;
-      background-color: white;  /* Helt hvid baggrund */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Let skygge over footeren */
+      background-color: white;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
       z-index: 1000;
     }
 
@@ -194,151 +188,116 @@
       opacity: 0.8;
     }
 
-
-
-
-    /* ---------------------------------------------------------------------Gør layoutet mere mobilvenligt */
-    @media (max-width: 600px) {                                            
-  .projects {
-      padding: 50px 50px;             /* Mere luft til kanterne */
+    /* Mobilvenlig */
+    @media (max-width: 600px) {
+      .projects {
+        padding: 50px 50px;
+        gap: 15px;
+      }
+      header {
+        flex-direction: row;
+        align-items: center;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+      .header-text {
+        align-self: flex-end;
+        font-size: 8px;
+        gap: 0.85px;
+      }
+      .line1 { font-size: 8px; }
+      .line2 { font-size: 6px; }
+      .logo { height: 55px; }
+      .project-text { font-size: 16px; }
     }
-      header {                                                              
-        flex-direction: row;                                              
-        align-items: center;                                                
-        padding-left: 30px;                                           
-        padding-right: 30px;                                                  
-      }                                                                        
-          .header-text {
-  align-self: flex-end;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  font-family: 'Futura', sans-serif;
-  font-size: 8px;
-  gap: 0.85px;
-}
-
-.line1 {
-  font-weight: bold;
-  font-size: 8px;
-}
-
-.line2 {
-  font-size: 6px;
-  color: #555;
-}
-       .logo {
-      height: 55px;
-      display: block;
-    }
-  .projects {                                                                    /* ---------------------------------------*/
-    padding-left: 30px;                                                                /* ---------------------------------------*/
-    padding-right: 30px;                                                                  /* ---------------------------------------*/
-    gap: 15px;          /* Mindre mellemrum mellem bokse */                                        /* ---------------------------------------*/
-  }                                                                                          /* ---------------------------------------*/
-                                                                                  /* ---------------------------------------*/
-  .project-text {                                                                  /* ---------------------------------------*/
-    font-size: 16px; /* Mindre tekst på mobil */                                        /* ---------------------------------------*/
-  }                                                                                  /* ---------------------------------------*/
-                                                                                    /* ---------------------------------------*/
-                                                                                    /* ---------------------------------------*/                                                                     /* ---------------------------------------*/
-      .btn-portfolio, .btn-contact {                                                      /* ---------------------------------------*/
-        font-size: 14px;                                                            /* ---------------------------------------*/
-        padding: 8px 16px;                                                        /* ---------------------------------------*/
-      }                                                                          /* ---------------------------------------*/
-      .project-text {                                                            /* ---------------------------------------*/
-        font-size: 16px;                                                    /* ---------------------------------------*/
-      }                                                                        /* ---------------------------------------*/
-    }                                                                         /* ---------------------------------------*/
-     /* ---------------------------------------------------------------------Gør layoutet mere mobilvenligt */
   </style>
 </head>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 <body>
 
   <!-- Topbar med logo og navigation -->
-<div class="header-wrapper">
-  <header>
-    
-    <a href="/">
-      <img src="LOGO-T-21.png" alt="Logo" class="logo" />
-    </a>
-    <div class="header-text">
-    <div class="line1">Cand.arch. MAA, Byplanlægger</div>
-    <div class="line2">Oliver Juul Jensen</div>
-    <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk"style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
-    <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
-    
+  <div class="header-wrapper">
+    <header>
+      <a href="/"><img src="LOGO-T-21.png" alt="Logo" class="logo" /></a>
+      <div class="header-text">
+        <div class="line1">Cand.arch. MAA, Byplanlægger</div>
+        <div class="line2">Oliver Juul Jensen</div>
+        <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk" style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
+        <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
+      </div>
+    </header>
   </div>
-  
-  </header>
-</div>
-<!-- Projekttitel -->
-<h2>Udvalgte projekter</h2>
-  
+
+  <!-- Projekttitel -->
+  <h2 class="projects-title">Udvalgte projekter</h2>
+
   <!-- Projektbokse -->
   <div class="projects">
-    <a href="projekt1/" class="project-box">
-      <div class="project-image" style="background-image: url('projekt1.jpg');"></div>
+
+    <div class="project-wrapper">
+      <a href="projekt1/" class="project-box">
+        <div class="project-image" style="background-image: url('projekt1.jpg');"></div>
+      </a>
       <div class="project-text">Vedkommende uderum</div>
-    </a>
-  
-    <a href="projekt2/" class="project-box">
-      <div class="project-image" style="background-image: url('projekt2.jpg');"></div>
+    </div>
+
+    <div class="project-wrapper">
+      <a href="projekt2/" class="project-box">
+        <div class="project-image" style="background-image: url('projekt2.jpg');"></div>
+      </a>
       <div class="project-text">KBH South</div>
-    </a>
+    </div>
 
-    <a href="projekt3.html" class="project-box">
-      <div class="project-image" style="background-image: url('projekt3.jpg');"></div>
+    <div class="project-wrapper">
+      <a href="projekt3.html" class="project-box">
+        <div class="project-image" style="background-image: url('projekt3.jpg');"></div>
+      </a>
       <div class="project-text">A neighborhood square</div>
-    </a>
+    </div>
 
-    <a href="projekt4.html" class="project-box">
-      <div class="project-image" style="background-image: url('projekt4.jpg');"></div>
+    <div class="project-wrapper">
+      <a href="projekt4.html" class="project-box">
+        <div class="project-image" style="background-image: url('projekt4.jpg');"></div>
+      </a>
       <div class="project-text">Levels of stay</div>
-    </a>
+    </div>
 
-    <a href="projekt5.html" class="project-box">
-      <div class="project-image" style="background-image: url('projekt5.jpg');"></div>
+    <div class="project-wrapper">
+      <a href="projekt5.html" class="project-box">
+        <div class="project-image" style="background-image: url('projekt5.jpg');"></div>
+      </a>
       <div class="project-text">Projekt 5</div>
-    </a>
+    </div>
 
-    <a href="projekt6.html" class="project-box">
-      <div class="project-image" style="background-image: url('projekt6.jpg');"></div>
+    <div class="project-wrapper">
+      <a href="projekt6.html" class="project-box">
+        <div class="project-image" style="background-image: url('projekt6.jpg');"></div>
+      </a>
       <div class="project-text">Projekt 6</div>
-    </a>
+    </div>
 
-    <a href="projekt7.html" class="project-box">
-      <div class="project-image" style="background-image: url('projekt7.jpg');"></div>
+    <div class="project-wrapper">
+      <a href="projekt7.html" class="project-box">
+        <div class="project-image" style="background-image: url('projekt7.jpg');"></div>
+      </a>
       <div class="project-text">Projekt 7</div>
-    </a>
+    </div>
 
-    <a href="projekt8.html" class="project-box">
-      <div class="project-image" style="background-image: url('projekt8.jpg');"></div>
+    <div class="project-wrapper">
+      <a href="projekt8.html" class="project-box">
+        <div class="project-image" style="background-image: url('projekt8.jpg');"></div>
+      </a>
       <div class="project-text">Projekt 8</div>
-    </a>
+    </div>
 
-    <a href="projekt9.html" class="project-box">
-      <div class="project-image" style="background-image: url('projekt9.jpg');"></div>
+    <div class="project-wrapper">
+      <a href="projekt9.html" class="project-box">
+        <div class="project-image" style="background-image: url('projekt9.jpg');"></div>
+      </a>
       <div class="project-text">Projekt 9</div>
-    </a>
-</div>
+    </div>
+
+  </div>
 
   <!-- Footer med LinkedIn -->
   <footer class="footer">
