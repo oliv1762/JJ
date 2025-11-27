@@ -13,18 +13,26 @@
       font-style: normal;
     }
 
-    html, body { margin: 0; padding: 0; overflow-x: hidden; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
     body {
       padding-top: 100px;
       font-family: 'Futura', sans-serif;
       cursor: crosshair;
       position: relative;
     }
+
     body::before {
       content: "";
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-image: url('BG-J100.png');
       background-repeat: repeat;
       background-size: 100px 200px;
@@ -35,7 +43,9 @@
 
     /* Header */
     header {
-      position: fixed; top: 0; left: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       display: flex;
       align-items: flex-end;
@@ -46,77 +56,119 @@
       gap: 15px;
       transition: top 1s ease;
     }
-    .logo { height: 110px; cursor: crosshair; }
-    .header-text { display: flex; flex-direction: column; justify-content: center; max-width: 300px; gap: 1.9px; }
+
+    .logo {
+      height: 110px;
+      cursor: crosshair;
+    }
+
+    .header-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      gap: 1.9px;
+    }
+
     .line1 { font-weight: bold; font-size: 16px; }
     .line2 { font-size: 12px; color: #555; }
 
     /* Footer */
     .footer {
-      position: fixed; bottom: -100px;
-      left: 0; width: 100%;
-      display: flex; justify-content: center; align-items: center;
+      position: fixed;
+      bottom: -100px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 15px 0;
       background: white;
       box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
       z-index: 1000;
       transition: bottom 0.3s ease;
     }
-    .linkedin-icon { width: 40px; cursor: crosshair; transition: transform 0.3s ease, opacity 0.3s ease; }
-    .linkedin-icon:hover { transform: scale(1.1); opacity: 0.8; }
 
-    /* Projekter */
+    .linkedin-icon {
+      width: 40px;
+      cursor: crosshair;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .linkedin-icon:hover {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+
+    /* Projekter - dynamiske bredder, fast højde */
     .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 25px;
-      padding: 120px 60px 120px 100px; /* ens luft over og under */
+      padding: 120px 60px 120px 100px;
       margin: 0 auto;
     }
+
     .project-box {
       position: relative;
-      height: 250px;
-      background-size: cover;
-      background-position: center;
+      display: block;
       cursor: pointer;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: block;
-      text-decoration: none;
-      color: inherit;
+      height: 250px;         /* fast højde */
+      flex: 0 0 auto;        /* bredde følger baggrundsbilledet */
+      background-size: cover;
+      background-position: center;
     }
-    .project-box:hover { transform: scale(1.03); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+
+    .project-box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
 
     /* Top overlay til hover */
     .project-top-overlay {
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 60px; /* kun toppen */
-      background: rgba(255,255,255,0); /* start gennemsigtig */
-      transition: background 1.2s ease; /* fade-in længere tid */
+      height: 60px;
+      background: rgba(255,255,255,0);
+      transition: background 1.2s ease;
       display: flex;
       align-items: center;
       padding-left: 15px;
     }
+
     .project-box:hover .project-top-overlay {
-      background: rgba(255,255,255,1); /* fade til hvid */
+      background: rgba(255,255,255,1);
     }
 
     .project-top-overlay .project-title {
       font-family: 'Futura', sans-serif;
       font-weight: bold;
       font-size: 20px;
-      color: rgba(0,0,0,0); /* start usynlig */
-      transition: color 1.2s ease; /* fade ind samtidigt med overlay */
+      color: rgba(0,0,0,0);
+      transition: color 1.2s ease;
     }
+
     .project-box:hover .project-top-overlay .project-title {
-      color: rgba(0,0,0,1); /* bliver sort på hover */
+      color: rgba(0,0,0,1);
     }
 
     @media (max-width: 600px) {
-      header { flex-direction: row; align-items: center; padding: 0 30px; }
-      .header-text { font-size: 8px; gap: 0.85px; align-self: flex-end; }
+      header {
+        flex-direction: row;
+        align-items: center;
+        padding: 0 30px;
+      }
+
+      .header-text {
+        font-size: 8px;
+        gap: 0.85px;
+        align-self: flex-end;
+      }
+
       .line1 { font-size: 8px; }
       .line2 { font-size: 6px; }
       .logo { height: 55px; }
@@ -125,7 +177,6 @@
     }
   </style>
 </head>
-
 <body>
   <!-- Header -->
   <header id="header">
@@ -155,25 +206,17 @@
     <a href="projekt5/" class="project-box" style="background-image: url('projekt5.jpg');">
       <div class="project-top-overlay"><div class="project-title">Projekt 5</div></div>
     </a>
-    <a href="projekt6/" class="project-box" style="background-image: url('projekt3.jpg');">
+    <a href="projekt6/" class="project-box" style="background-image: url('projekt6.jpg');">
       <div class="project-top-overlay"><div class="project-title">Projekt 6</div></div>
     </a>
-      <a href="projekt4/" class="project-box" style="background-image: url('projekt4.jpg');">
+      </a>
+    <a href="projekt4/" class="project-box" style="background-image: url('projekt4.jpg');">
       <div class="project-top-overlay"><div class="project-title">Projekt 4</div></div>
     </a>
     <a href="projekt5/" class="project-box" style="background-image: url('projekt5.jpg');">
       <div class="project-top-overlay"><div class="project-title">Projekt 5</div></div>
     </a>
-    <a href="projekt6/" class="project-box" style="background-image: url('projekt3.jpg');">
-      <div class="project-top-overlay"><div class="project-title">Projekt 6</div></div>
-    </a>
-      <a href="projekt4/" class="project-box" style="background-image: url('projekt4.jpg');">
-      <div class="project-top-overlay"><div class="project-title">Projekt 4</div></div>
-    </a>
-    <a href="projekt5/" class="project-box" style="background-image: url('projekt5.jpg');">
-      <div class="project-top-overlay"><div class="project-title">Projekt 5</div></div>
-    </a>
-    <a href="projekt6/" class="project-box" style="background-image: url('projekt3.jpg');">
+    <a href="projekt6/" class="project-box" style="background-image: url('projekt6.jpg');">
       <div class="project-top-overlay"><div class="project-title">Projekt 6</div></div>
     </a>
   </div>
@@ -193,7 +236,6 @@
 
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset;
-
       // Header skjul/vis
       if (currentScroll > lastScroll && currentScroll > 50) {
         header.style.top = `-${headerHeight}px`;
