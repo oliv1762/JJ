@@ -55,6 +55,7 @@
       z-index: 1000;
       gap: 15px;
       transition: top 1s ease;
+      flex-wrap: wrap;
     }
 
     .logo { height: 110px; cursor: crosshair; }
@@ -104,15 +105,15 @@
       gap: 25px;
       padding: 120px 60px 120px 100px;
       margin: 0 auto;
+      justify-content: center;
     }
 
     .project-box {
-       cursor: crosshair;
       position: relative;
       display: block;
       height: 250px;         /* fast højde */
       overflow: hidden;
-      cursor: pointer;
+      cursor: crosshair;
       flex: 0 0 auto;        /* bredden følger billedets proportion */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -124,7 +125,6 @@
     }
 
     .project-box:hover {
-       cursor: crosshair;
       transform: scale(1.03);
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
@@ -159,20 +159,45 @@
       color: rgba(0,0,0,1);
     }
 
-    @media (max-width: 600px) {
+    /* RESPONSIVE STYLES */
+    @media (max-width: 1024px) {
       header {
-        flex-direction: row;
-        align-items: center;
-        padding: 0 30px;
+        padding: 20px 50px;
       }
-
-      .header-text { font-size: 8px; gap: 0.85px; align-self: flex-end; }
-      .line1 { font-size: 8px; }
-      .line2 { font-size: 6px; }
-      .logo { height: 55px; }
-      .project-title { font-size: 16px; }
-      .projects { padding: 120px 50px 120px 50px; gap: 15px; }
+      .projects {
+        padding: 120px 40px 120px 40px;
+        gap: 20px;
+      }
     }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 30px;
+      }
+      .logo { height: 80px; }
+      .header-text { max-width: 200px; gap: 1px; }
+      .line1 { font-size: 14px; }
+      .line2 { font-size: 10px; }
+      .projects { padding: 120px 20px 120px 20px; gap: 15px; }
+      .project-box { height: 200px; }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+      }
+      .logo { height: 55px; }
+      .header-text { font-size: 8px; max-width: 100%; gap: 0.8px; }
+      .line1 { font-size: 10px; }
+      .line2 { font-size: 8px; }
+      .projects { padding: 100px 10px 80px 10px; gap: 10px; justify-content: center; }
+      .project-box { height: 150px; }
+      .project-top-overlay { height: 40px; padding-left: 10px; }
+      .project-top-overlay .project-title { font-size: 14px; }
+    }
+
   </style>
 </head>
 <body>
