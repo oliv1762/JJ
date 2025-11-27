@@ -44,7 +44,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 1000;
       gap: 15px;
-      transition: transform 0.3s ease; /* brug transform i stedet for top */
+      transition: top 0.3s ease;
     }
     .logo { height: 110px; cursor: crosshair; }
     .header-text { display: flex; flex-direction: column; justify-content: center; max-width: 300px; gap: 1.9px; }
@@ -70,7 +70,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 25px;
-      padding: 100px 60px 60px 100px; /* ekstra top og bund */
+      padding: 120px 60px 120px 100px; /* ens luft over og under */
       margin: 0 auto;
     }
     .project-box {
@@ -78,9 +78,12 @@
       height: 250px;
       background-size: cover;
       background-position: center;
-      cursor: crosshair;
+      cursor: pointer;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: block; /* gør linket blok-level */
+      text-decoration: none;
+      color: inherit;
     }
     .project-box:hover { transform: scale(1.03); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
     .project-overlay {
@@ -108,7 +111,7 @@
       .line2 { font-size: 6px; }
       .logo { height: 55px; }
       .project-title { font-size: 16px; }
-      .projects { padding: 50px; gap: 15px; }
+      .projects { padding: 120px 50px 120px 50px; gap: 15px; }
     }
   </style>
 </head>
@@ -127,42 +130,41 @@
 
   <!-- Projekter -->
   <div class="projects">
-    <div class="project-box" style="background-image: url('project1.jpg');">
+    <a href="projekt1/index.html" class="project-box" style="background-image: url('project1.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 1</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project2.jpg');">
+    </a>
+
+    <a href="projekt2/index.html" class="project-box" style="background-image: url('project2.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 2</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project3.jpg');">
+    </a>
+
+    <a href="projekt3/index.html" class="project-box" style="background-image: url('project3.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 3</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project1.jpg');">
+    </a>
+
+    <a href="projekt4/index.html" class="project-box" style="background-image: url('project1.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 4</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project2.jpg');">
+    </a>
+
+    <a href="projekt5/index.html" class="project-box" style="background-image: url('project2.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 5</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project3.jpg');">
+    </a>
+
+    <a href="projekt6/index.html" class="project-box" style="background-image: url('project3.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 6</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project1.jpg');">
+    </a>
+
+    <a href="projekt7/index.html" class="project-box" style="background-image: url('project1.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 7</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project2.jpg');">
+    </a>
+
+    <a href="projekt8/index.html" class="project-box" style="background-image: url('project2.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 8</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project3.jpg');">
+    </a>
+
+    <a href="projekt9/index.html" class="project-box" style="background-image: url('project3.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 9</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project1.jpg');">
-      <div class="project-overlay"><div class="project-title">Projekt 10</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project2.jpg');">
-      <div class="project-overlay"><div class="project-title">Projekt 11</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project3.jpg');">
-      <div class="project-overlay"><div class="project-title">Projekt 12</div></div>
-    </div>
+    </a>
   </div>
 
   <!-- Footer -->
@@ -180,17 +182,21 @@
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset;
 
-      // Header skjul/vis med transform
+      // Header skjul/vis
       if (currentScroll > lastScroll && currentScroll > 100) {
-        header.style.transform = 'translateY(-100%)'; // hele headeren forsvinder
+        header.style.top = '-120px';
       } else {
-        header.style.transform = 'translateY(0)';
+        header.style.top = '0';
       }
       lastScroll = currentScroll;
 
       // Footer vis kun i bunden
       const scrollBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 10;
-      footer.style.bottom = scrollBottom ? '0' : '-100px';
+      if (scrollBottom) {
+        footer.style.bottom = '0';
+      } else {
+        footer.style.bottom = '-100px';
+      }
     });
   </script>
 </body>
