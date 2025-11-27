@@ -1,208 +1,181 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Min hjemmeside</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-  <style>
-    /* Font */
-    @font-face {
-      font-family: 'Futura';
-      src: local('Futura'), url('Futura.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Min hjemmeside</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      font-family: 'Futura', sans-serif;
-      cursor: crosshair;
-      background-color: white;
-    }
+<style>
+@font-face {
+  font-family: 'Futura';
+  src: local('Futura'), url('Futura.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: url('BG-J100.png');
-      background-repeat: repeat;
-      background-size: 100px 200px;
-      opacity: 0.2;
-      z-index: -1;
-      pointer-events: none;
-    }
+/* Forhindrer horisontal scroll */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
-    /* ------------------ Header ------------------ */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      align-items: flex-end;
-      padding: 20px 100px;
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      z-index: 1000;
-      gap: 15px;
-    }
+body {
+  background-color: white;
+  font-family: 'Futura', sans-serif;
+  cursor: crosshair;
+  position: relative;
+  padding-top: 140px; /* plads til header */
+}
 
-    .logo {
-      height: 110px;
-      cursor: crosshair;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
+/* Baggrundsmønster */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('BG-J100.png');
+  background-repeat: repeat;
+  background-size: 100px 200px;
+  opacity: 0.2;
+  z-index: -1;
+  pointer-events: none;
+}
 
-    .header-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      max-width: 300px;
-      gap: 1.9px;
-    }
+/* Header */
+.header-wrapper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: top 0.5s ease;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
-    .line1 { font-weight: bold; font-size: 16px; }
-    .line2 { font-size: 12px; color: #555; }
+header {
+  display: flex;
+  align-items: flex-end;
+  padding: 20px 100px;
+  gap: 15px;
+}
 
-    /* ------------------ Footer ------------------ */
-    .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: white;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0;
-      z-index: 1000;
-    }
+.logo {
+  height: 110px;
+  cursor: crosshair;
+  user-select: none;
+  -webkit-user-drag: none;
+}
 
-    .linkedin-icon {
-      width: 40px;
-      cursor: crosshair;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
+.header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 300px;
+  font-size: 16px;
+  gap: 1.9px;
+}
 
-    .linkedin-icon:hover {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
+.line1 { font-weight: bold; font-size: 16px; }
+.line2 { font-size: 12px; color: #555; }
 
-    /* ------------------ Content Sections ------------------ */
-    .content-section {
-      display: flex;
-      justify-content: space-between;
-      gap: 50px;
-      padding: 120px 100px 100px 100px;
-      align-items: flex-start;
-    }
+/* Projekter / content-sektioner */
+.content-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 100px 100px;
+  align-items: flex-start;
+}
 
-    .text-section {
-      flex: 1;
-    }
+.text-section {
+  flex: 1;
+}
 
-    .nummer { font-size: 60px; font-weight: bold; margin-bottom: 10px; }
-    .overskrift { font-size: 28px; font-weight: bold; }
-    .spaltetekst {
-      column-count: 2;
-      column-gap: 40px;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #333;
-    }
-    .spaltetekst p { margin-bottom: 1em; }
+.text-section .nummer { font-size: 60px; font-weight: bold; margin-bottom: 10px; }
+.text-section .overskrift { font-size: 28px; font-weight: bold; }
+.spaltetekst { column-count: 2; column-gap: 40px; font-size: 14px; line-height: 1.6; color: #333; }
+.spaltetekst p { margin-bottom: 1em; }
 
-    .full-width-image-wrapper {
-      margin: 0 auto;
-      padding: 0 100px;
-      box-sizing: border-box;
-    }
+.full-width-image-wrapper {
+  margin: 0 auto;
+  padding: 0 100px;
+  box-sizing: border-box;
+}
+.full-width-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-    .full-width-image-wrapper img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  bottom: -100px;
+  left: 0;
+  z-index: 1000;
+  transition: bottom 0.3s ease;
+}
 
-    .Doverskrift {
-      font-family: 'Futura';
-      font-weight: bold;
-      text-align: center;
-      font-size: 15px;
-      line-height: 1.5em;
-      margin-top: 50px;
-    }
+.linkedin-icon {
+  width: 40px;
+  cursor: crosshair;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.linkedin-icon:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
 
-    .Dtekst {
-      font-family: 'EB Garamond', serif;
-      font-size: 14px;
-      text-align: center;
-      padding: 0 10px;
-      line-height: 1.5;
-      margin-bottom: 50px;
-    }
+/* Responsivt layout */
+@media (max-width: 600px) {
+  header {
+    flex-direction: row;
+    align-items: center;
+    padding: 0 30px;
+  }
 
-    .gallery-image {
-      width: 100%;
-      max-height: 400px;
-      object-fit: contain;
-      border: 1px solid black;
-      background-color: white;
-    }
+  .header-text { font-size: 8px; gap: 0.85px; align-self: flex-end; }
+  .line1 { font-size: 8px; }
+  .line2 { font-size: 6px; }
+  .logo { height: 55px; }
 
-    /* ------------------ Responsiv ------------------ */
-    @media (max-width: 1024px) {
-      .content-section { padding: 100px 50px 80px 50px; gap: 30px; }
-      .full-width-image-wrapper { padding: 0 50px; }
-    }
+  .content-section {
+    flex-direction: column;
+    padding: 50px 30px;
+  }
+  .spaltetekst { column-count: 1; font-size: 10px; }
+  .text-section .nummer { font-size: 36px; }
+  .text-section .overskrift { font-size: 20px; }
+  .full-width-image-wrapper { padding: 0 30px; }
+}
 
-    @media (max-width: 600px) {
-      header {
-        flex-direction: row;
-        align-items: center;
-        padding: 15px 30px;
-      }
-
-      .logo { height: 55px; }
-      .header-text { font-size: 8px; gap: 0.85px; align-self: flex-end; }
-      .line1 { font-size: 8px; }
-      .line2 { font-size: 6px; }
-
-      .content-section {
-        flex-direction: column;
-        padding: 80px 30px 50px 30px;
-        gap: 20px;
-      }
-
-      .spaltetekst { column-count: 1; font-size: 12px; }
-      .nummer { font-size: 36px; }
-      .overskrift { font-size: 20px; }
-      .gallery-image { max-height: 250px; }
-      .Dtekst { font-size: 12px; padding: 0 5px; }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-
   <!-- Header -->
-  <header>
-    <a href="/"><img src="../LOGO-T-21.png" alt="Logo" class="logo"></a>
-    <div class="header-text">
-      <div class="line1">Cand.arch. MAA, Byplanlægger</div>
-      <div class="line2">Oliver Juul Jensen</div>
-      <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk" style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
-      <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
-    </div>
-  </header>
+  <div class="header-wrapper" id="header">
+    <header>
+      <a href="/"><img src="../LOGO-T-21.png" alt="Logo" class="logo"></a>
+      <div class="header-text">
+        <div class="line1">Cand.arch. MAA, Byplanlægger</div>
+        <div class="line2">Oliver Juul Jensen</div>
+        <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk" style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
+        <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
+      </div>
+    </header>
+  </div>
 
-  <!-- Content Section -->
+  <!-- Content -->
   <section class="content-section">
     <div class="text-section">
       <div class="nummer">01</div>
@@ -217,22 +190,41 @@
     </div>
   </section>
 
-  <!-- Full-width image -->
   <div class="full-width-image-wrapper">
     <img src="../Image2.jpg" alt="Billede">
   </div>
-
   <h2 class="Doverskrift">ET NYT OPHOLD</h2>
   <p class="Dtekst">Den nye gader opstår mellem de ældre renoverede boliger og de nyanlagte boliger.</p>
 
-  <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" class="gallery-image">
+  <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede">
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
       <img src="../LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
     </a>
   </footer>
 
+  <script>
+    const header = document.getElementById('header');
+    const footer = document.getElementById('footer');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      // Header skjul/vis
+      if (currentScroll > lastScroll && currentScroll > 50) {
+        header.style.top = '-140px'; // skjul header
+      } else {
+        header.style.top = '0';
+      }
+      lastScroll = currentScroll;
+
+      // Footer vis kun i bunden
+      const scrollBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 10;
+      footer.style.bottom = scrollBottom ? '0' : '-100px';
+    });
+  </script>
 </body>
 </html>
