@@ -2,12 +2,11 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Gør siden mobilvenlig -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Min hjemmeside</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-  
   <style>
-    /* Import af font */
+    /* Font */
     @font-face {
       font-family: 'Futura';
       src: local('Futura'), url('Futura.woff2') format('woff2');
@@ -15,58 +14,15 @@
       font-style: normal;
     }
 
-     
-     /* Bestemmer topbar og luft */
-    .header-wrapper {
- 
-      margin: 0 auto;
-    }
-    .header-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 300px; /* Justér efter behov */
-  font-family: 'Futura', sans-serif;
-  font-size: 16px;
-  gap: 1.9px;
-}
-                                                                      
-  .full-width-image-wrapper {
-  margin: 0 auto;       /* Centrerer horisontalt */
-  padding: 0 100px;      /* Samme luft til sider som content-section */
-  box-sizing: border-box;
-}
-
-.full-width-image-wrapper img {
-  width: 100%;          /* Fylder hele bredden af wrapperen */
-  height: auto;         /* Bevarer proportioner */
-  display: block;       /* Fjerner evt. luft under billedet */
-}  
-.line1 {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.line2 {
-  font-size: 12px;
-  color: #555;
-}
-
-    /* Forhindrer uønsket horisontal scroll */
     html, body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-    }
-
-    body {
-      background-color: white;
       font-family: 'Futura', sans-serif;
       cursor: crosshair;
-      position: relative;
+      background-color: white;
     }
 
-    /* Baggrundsbillede med gennemsigtighed */
     body::before {
       content: "";
       position: fixed;
@@ -80,159 +36,117 @@
       pointer-events: none;
     }
 
-    /* fixed top-bar*/
+    /* ------------------ Header ------------------ */
     header {
-      left: 0;          /* Vigtigt: starter helt til venstre */
-      width: 100%;      /* Fylder hele bredden */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
       display: flex;
       align-items: flex-end;
-      padding: 20px 100px 20px 100px;                                                 /* afstand i hvid boks  */
-      top: 0;
-      background-color: white; /* Permanent hvid baggrund */
+      padding: 20px 100px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 1000;
       gap: 15px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Let skygge under headeren */
     }
 
     .logo {
       height: 110px;
       cursor: crosshair;
-     user-select: none;
+      user-select: none;
       -webkit-user-drag: none;
     }
 
-    .btn-portfolio, .btn-contact {
-      padding: 10px 20px;
-      background-color: white;
-      color: black;
-      border: 3px solid black;
-      border-radius: 0;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: crosshair;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .btn-portfolio:hover, .btn-contact:hover {
-      background-color: black;
-      color: white;
-    }
-
-    /* Projekt-galleri */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;                      /* Øget afstand mellem bokse */
-      padding: 100px 100px;             /* Mere luft til kanterne */
-      margin: 0 auto;                 /* Centrer grid'en på siden */
-    }
-    
-    .project-box {
-      position: relative;
-      aspect-ratio: 1 / 1;
-      text-decoration: none;
-      overflow: hidden;
-      border: 0.5px solid black;
-      cursor: crosshair;
-       background-color: white; /* Gør baggrunden hvid */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tilføj skygge */
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    .project-image {
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.3s ease;
-    }
-
-    .project-text {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 10px;
-      background-color: rgba(255, 255, 255, 0.85);
-      color: black;
-      font-family: 'Futura', sans-serif;
-      font-size: 20px;
-      font-weight: bold;
-      text-align: center;
-      border-top: 3px solid black;
-    }
-
-    .project-box:hover .project-image {
-      transform: scale(1.05);
-    }
-
-    /* Footer med LinkedIn-ikon */
-    .footer {
+    .header-text {
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: center;
-      padding: 40px 0 20px 0;
-     
+      max-width: 300px;
+      gap: 1.9px;
+    }
+
+    .line1 { font-weight: bold; font-size: 16px; }
+    .line2 { font-size: 12px; color: #555; }
+
+    /* ------------------ Footer ------------------ */
+    .footer {
+      position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
-      background-color: white;  /* Helt hvid baggrund */
+      background-color: white;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 15px 0;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Let skygge over footeren */
       z-index: 1000;
-       margin-top: 40px;
     }
 
     .linkedin-icon {
       width: 40px;
-      height: auto;
-      transition: transform 0.3s ease, opacity 0.3s ease;
       cursor: crosshair;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     .linkedin-icon:hover {
       transform: scale(1.1);
       opacity: 0.8;
     }
+
+    /* ------------------ Content Sections ------------------ */
     .content-section {
       display: flex;
       justify-content: space-between;
       gap: 50px;
-      padding: 100px 100px;
+      padding: 120px 100px 100px 100px;
       align-items: flex-start;
     }
-.content-section hr {
-  border: none;           /* Fjern standard kant */
-  border-top: 2px solid black; /* Lav en sort, 2px tyk linje */
-  margin: 15px 0;         /* Luft over og under linjen */
-  width: 200px;            /* Bredden på linjen (kan justeres) */
-}
-    .text-content {
+
+    .text-section {
       flex: 1;
-      font-family: 'Futura', sans-serif;
     }
 
-    .text-content h1 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .text-content p {
+    .nummer { font-size: 60px; font-weight: bold; margin-bottom: 10px; }
+    .overskrift { font-size: 28px; font-weight: bold; }
+    .spaltetekst {
+      column-count: 2;
+      column-gap: 40px;
       font-size: 14px;
       line-height: 1.6;
       color: #333;
     }
+    .spaltetekst p { margin-bottom: 1em; }
 
-    .image-gallery {
-      position: relative;
-      flex: 1;
-      max-width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .full-width-image-wrapper {
+      margin: 0 auto;
+      padding: 0 100px;
+      box-sizing: border-box;
+    }
+
+    .full-width-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .Doverskrift {
+      font-family: 'Futura';
+      font-weight: bold;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.5em;
+      margin-top: 50px;
+    }
+
+    .Dtekst {
+      font-family: 'EB Garamond', serif;
+      font-size: 14px;
+      text-align: center;
+      padding: 0 10px;
+      line-height: 1.5;
+      margin-bottom: 50px;
     }
 
     .gallery-image {
@@ -243,228 +157,80 @@
       background-color: white;
     }
 
-    .gallery-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: white;
-      border: 1px solid black;
-      font-size: 24px;
-      cursor: crosshair;
-      padding: 5px 10px;
-      z-index: 10;
-      transition: background-color 0.3s ease;
+    /* ------------------ Responsiv ------------------ */
+    @media (max-width: 1024px) {
+      .content-section { padding: 100px 50px 80px 50px; gap: 30px; }
+      .full-width-image-wrapper { padding: 0 50px; }
     }
 
-    .gallery-btn:hover {
-      background-color: black;
-      color: white;
-    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: row;
+        align-items: center;
+        padding: 15px 30px;
+      }
 
-    .gallery-btn.prev {
-      left: 0;
-    }
+      .logo { height: 55px; }
+      .header-text { font-size: 8px; gap: 0.85px; align-self: flex-end; }
+      .line1 { font-size: 8px; }
+      .line2 { font-size: 6px; }
 
-    .gallery-btn.next {
-      right: 0;
-    }
-.text-section {
-  width: 100%;
-  padding: 0px 0px;
-  box-sizing: border-box;
-}
-
-.nummer {
-  font-size: 60px;
-  font-weight: bold;
-  line-height: 1;
-  margin-bottom: 10px;
-}
-
-.overskrift {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.spaltetekst {
-  column-count: 2;
-  column-gap: 40px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #333;
-}
-
-.spaltetekst p {
-  margin-bottom: 1em;
-}
-.Dtekst {
-  font-family: 'EB Garamond', serif;
-        font-size: 14px;
-        padding: 0 10px;
-        line-height: 1.5;
-      text-align: center;
-} 
-h2 {
-  margin: 0;
-  padding: 0;
-}
-.Doverskrift {
-  font-family: 'Futura';
-font-weight: bold;
-  text-align: center;               /* centrerer teksten */
- font-size: 15px;
-  line-height: 1.5em
-}
-    /* ---------------------------------------------------------------------Gør layoutet mere mobilvenligt */
-    @media (max-width: 600px) {                                            
-  .projects {
-      padding: 50px 50px;             /* Mere luft til kanterne */
-    }
- .full-width-image-wrapper {
-  margin: 0 auto;       /* Centrerer horisontalt */
-  padding: 0 50px;      /* Samme luft til sider som content-section */
-  box-sizing: border-box;
-}
-      header {                                                              
-        flex-direction: row;                                              
-        align-items: center;                                                
-        padding-left: 30px;                                           
-        padding-right: 30px;                                                  
-      }  
-          .header-text {
-  align-self: flex-end;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  font-family: 'Futura', sans-serif;
-  font-size: 8px;
-  gap: 0.85px;
-}
-
-.line1 {
-  font-weight: bold;
-  font-size: 8px;
-}
-
-.line2 {
-  font-size: 6px;
-  color: #555;
-}
-       .logo {
-      height: 55px;
-      display: block;
-    }
-  .projects {                                                                    /* ---------------------------------------*/
-    padding-left: 30px;                                                                /* ---------------------------------------*/
-    padding-right: 30px;                                                                  /* ---------------------------------------*/
-    gap: 15px;          /* Mindre mellemrum mellem bokse */                                        /* ---------------------------------------*/
-  }                                                                                          /* ---------------------------------------*/
-                                                                                  /* ---------------------------------------*/
-  .project-text {                                                                  /* ---------------------------------------*/
-    font-size: 16px; /* Mindre tekst på mobil */                                        /* ---------------------------------------*/
-  }                                                                                  /* ---------------------------------------*/
-                                                                                    /* ---------------------------------------*/
-                                                                                    /* ---------------------------------------*/                                                                     /* ---------------------------------------*/
-      .btn-portfolio, .btn-contact {                                                      /* ---------------------------------------*/
-        font-size: 14px;                                                            /* ---------------------------------------*/
-        padding: 8px 16px;                                                        /* ---------------------------------------*/
-      }                                                                          /* ---------------------------------------*/
-      .project-text {                                                            /* ---------------------------------------*/
-        font-size: 16px;                                                    /* ---------------------------------------*/
-      }   
-        
-     .content-section {
-         padding: 50px 50px;
+      .content-section {
         flex-direction: column;
+        padding: 80px 30px 50px 30px;
+        gap: 20px;
       }
 
-      .text-content h1 {
-        font-size: 20px;
-      }
-
-      .text-content p {
-        font-size: 14px;
-      }
-.spaltetekst {
-   font-size: 10px;
-  column-count: 1;
-}
-.nummer {
-  font-size: 36px;
-}
-.overskrift {
-  font-size: 20px;
-}
-      .gallery-image {
-        max-height: 250px;
-      }
-    }                                                             /* ---------------------------------------*/
-    }                                                                         /* ---------------------------------------*/
-     /* ---------------------------------------------------------------------Gør layoutet mere mobilvenligt */
+      .spaltetekst { column-count: 1; font-size: 12px; }
+      .nummer { font-size: 36px; }
+      .overskrift { font-size: 20px; }
+      .gallery-image { max-height: 250px; }
+      .Dtekst { font-size: 12px; padding: 0 5px; }
+    }
   </style>
 </head>
-
 <body>
 
-  <!-- Topbar med logo og navigation -->
-<div class="header-wrapper">
+  <!-- Header -->
   <header>
-    
-    <a href="/">
-      <img src="../LOGO-T-21.png" alt="Logo" class="logo" />
-    </a>
+    <a href="/"><img src="../LOGO-T-21.png" alt="Logo" class="logo"></a>
     <div class="header-text">
-    <div class="line1">Cand.arch. MAA, Byplanlægger</div>
-    <div class="line2">Oliver Juul Jensen</div>
-    <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk"style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
-    <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
-    
-  </div>
-  
-  </header>
-</div>
-
-
-<section class="content-section">
-  <div class="text-section">
-    <div class="nummer">01</div>
-    <div class="overskrift">Vedkommende uderum</div>
-    <div class="spaltetekst">
-      <p>Montagecirkulæret fra 1960’erne gjorde det muligt hurtigt at opfylde efterkrigstidens behov for almene boliger.
-      Dog havde denne rationalisering af byggebranchen også negativ effekt.
-      Den formåede ikke at tage højde for den menneskelige skala.</p>
-
-      <p>Dette afgangsprojekt stiller spørgsmålet:</p>
-
-      <p>Hvordan kan man i et alment boligområde fra 1960’erne skabe vedkommende uderum på tværs af naboskaber?</p>
-
-      <p>I arbejdet med dette projekt har været guidet af en række værdier, der har været essentielle både i tilgangen og for det endelige resultat. De centrale værdier i mit projekt har været menneskelig skala, som skaber intime, trygge rum for beboerne, og fællesskab, hvor sociale relationer er grundlaget for et dynamisk byliv.</p>
-
-      <p>For at opnå dette, er bebyggelsesområderne (Reseda- og Lupinvej) bearbejdet i fire skalaer – fire forskellige former for naboskab af rumlig karakter i varierende skala: S, M, L og XL.</p>
+      <div class="line1">Cand.arch. MAA, Byplanlægger</div>
+      <div class="line2">Oliver Juul Jensen</div>
+      <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk" style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
+      <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
     </div>
+  </header>
+
+  <!-- Content Section -->
+  <section class="content-section">
+    <div class="text-section">
+      <div class="nummer">01</div>
+      <div class="overskrift">Vedkommende uderum</div>
+      <div class="spaltetekst">
+        <p>Montagecirkulæret fra 1960’erne gjorde det muligt hurtigt at opfylde efterkrigstidens behov for almene boliger. Dog havde denne rationalisering af byggebranchen også negativ effekt. Den formåede ikke at tage højde for den menneskelige skala.</p>
+        <p>Dette afgangsprojekt stiller spørgsmålet:</p>
+        <p>Hvordan kan man i et alment boligområde fra 1960’erne skabe vedkommende uderum på tværs af naboskaber?</p>
+        <p>I arbejdet med dette projekt har været guidet af en række værdier, der har været essentielle både i tilgangen og for det endelige resultat. De centrale værdier i mit projekt har været menneskelig skala, som skaber intime, trygge rum for beboerne, og fællesskab, hvor sociale relationer er grundlaget for et dynamisk byliv.</p>
+        <p>For at opnå dette, er bebyggelsesområderne (Reseda- og Lupinvej) bearbejdet i fire skalaer – fire forskellige former for naboskab af rumlig karakter i varierende skala: S, M, L og XL.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full-width image -->
+  <div class="full-width-image-wrapper">
+    <img src="../Image2.jpg" alt="Billede">
   </div>
-</section>
 
-<div class="full-width-image-wrapper">
-  <img src="../Image2.jpg" alt="Billede" />
-</div>
- <h2 class="Doverskrift">
-    ET NYT OPHOLD
-  </h2>
-<p class="Dtekst">
-   Den nye gader opstår mellem de ældre renoverede boliger og de nyanlagte boliger.
-</p>
+  <h2 class="Doverskrift">ET NYT OPHOLD</h2>
+  <p class="Dtekst">Den nye gader opstår mellem de ældre renoverede boliger og de nyanlagte boliger.</p>
 
+  <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" class="gallery-image">
 
-
-  <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" />
-
-
-  
-  <!-- Footer med LinkedIn -->
+  <!-- Footer -->
   <footer class="footer">
     <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
-      <img src="..//LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
+      <img src="../LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
     </a>
   </footer>
 
