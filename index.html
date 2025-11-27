@@ -44,7 +44,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 1000;
       gap: 15px;
-      transition: top 0.3s ease; /* til scroll-effekt */
+      transition: transform 0.3s ease; /* brug transform i stedet for top */
     }
     .logo { height: 110px; cursor: crosshair; }
     .header-text { display: flex; flex-direction: column; justify-content: center; max-width: 300px; gap: 1.9px; }
@@ -53,7 +53,7 @@
 
     /* Footer */
     .footer {
-      position: fixed; bottom: -100px; /* skjult til start */
+      position: fixed; bottom: -100px;
       left: 0; width: 100%;
       display: flex; justify-content: center; align-items: center;
       padding: 15px 0;
@@ -136,7 +136,7 @@
     <div class="project-box" style="background-image: url('project3.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 3</div></div>
     </div>
-     <div class="project-box" style="background-image: url('project1.jpg');">
+    <div class="project-box" style="background-image: url('project1.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 4</div></div>
     </div>
     <div class="project-box" style="background-image: url('project2.jpg');">
@@ -145,16 +145,6 @@
     <div class="project-box" style="background-image: url('project3.jpg');">
       <div class="project-overlay"><div class="project-title">Projekt 6</div></div>
     </div>
-     <div class="project-box" style="background-image: url('project1.jpg');">
-      <div class="project-overlay"><div class="project-title">Projekt 7</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project2.jpg');">
-      <div class="project-overlay"><div class="project-title">Projekt 8</div></div>
-    </div>
-    <div class="project-box" style="background-image: url('project3.jpg');">
-      <div class="project-overlay"><div class="project-title">Projekt 9</div></div>
-    </div>
-    <!-- ... resten af projekterne ... -->
   </div>
 
   <!-- Footer -->
@@ -172,21 +162,17 @@
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset;
 
-      // Header skjul/vis
+      // Header skjul/vis med transform
       if (currentScroll > lastScroll && currentScroll > 100) {
-        header.style.top = '-120px';
+        header.style.transform = 'translateY(-100%)'; // hele headeren forsvinder
       } else {
-        header.style.top = '0';
+        header.style.transform = 'translateY(0)';
       }
       lastScroll = currentScroll;
 
       // Footer vis kun i bunden
       const scrollBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 10;
-      if (scrollBottom) {
-        footer.style.bottom = '0';
-      } else {
-        footer.style.bottom = '-100px';
-      }
+      footer.style.bottom = scrollBottom ? '0' : '-100px';
     });
   </script>
 </body>
