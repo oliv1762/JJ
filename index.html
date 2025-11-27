@@ -57,10 +57,7 @@
       transition: top 1s ease;
     }
 
-    .logo {
-      height: 110px;
-      cursor: crosshair;
-    }
+    .logo { height: 110px; cursor: crosshair; }
 
     .header-text {
       display: flex;
@@ -100,7 +97,7 @@
       opacity: 0.8;
     }
 
-    /* Projekter - dynamiske bredder, fast højde */
+    /* Projekter - dynamiske bredder med fixed height */
     .projects {
       display: flex;
       flex-wrap: wrap;
@@ -112,13 +109,17 @@
     .project-box {
       position: relative;
       display: block;
-      cursor: pointer;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       height: 250px;         /* fast højde */
-      flex: 0 0 auto;        /* bredde følger baggrundsbilledet */
-      background-size: cover;
-      background-position: center;
+      overflow: hidden;
+      cursor: pointer;
+      flex: 0 0 auto;        /* bredden følger billedets proportion */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-box img {
+      height: 100%;          /* fylder højde */
+      width: auto;           /* bredde følger billedets proportion */
+      display: block;
     }
 
     .project-box:hover {
@@ -163,12 +164,7 @@
         padding: 0 30px;
       }
 
-      .header-text {
-        font-size: 8px;
-        gap: 0.85px;
-        align-self: flex-end;
-      }
-
+      .header-text { font-size: 8px; gap: 0.85px; align-self: flex-end; }
       .line1 { font-size: 8px; }
       .line2 { font-size: 6px; }
       .logo { height: 55px; }
@@ -191,32 +187,40 @@
 
   <!-- Projekter -->
   <div class="projects">
-    <a href="projekt1/" class="project-box" style="background-image: url('projekt1.jpg');">
+    <a href="projekt1/" class="project-box">
+      <img src="projekt1.jpg" alt="Projekt 1">
       <div class="project-top-overlay"><div class="project-title">Projekt 1</div></div>
     </a>
-    <a href="projekt2/" class="project-box" style="background-image: url('projekt2.jpg');">
+    <a href="projekt2/" class="project-box">
+      <img src="projekt2.jpg" alt="Projekt 2">
       <div class="project-top-overlay"><div class="project-title">Projekt 2</div></div>
     </a>
-    <a href="projekt3/" class="project-box" style="background-image: url('projekt3.jpg');">
+    <a href="projekt3/" class="project-box">
+      <img src="projekt3.jpg" alt="Projekt 3">
       <div class="project-top-overlay"><div class="project-title">Projekt 3</div></div>
     </a>
-    <a href="projekt4/" class="project-box" style="background-image: url('projekt4.jpg');">
+    <a href="projekt4/" class="project-box">
+      <img src="projekt4.jpg" alt="Projekt 4">
       <div class="project-top-overlay"><div class="project-title">Projekt 4</div></div>
     </a>
-    <a href="projekt5/" class="project-box" style="background-image: url('projekt5.jpg');">
+    <a href="projekt5/" class="project-box">
+      <img src="projekt5.jpg" alt="Projekt 5">
       <div class="project-top-overlay"><div class="project-title">Projekt 5</div></div>
     </a>
-    <a href="projekt6/" class="project-box" style="background-image: url('projekt6.jpg');">
+    <a href="projekt6/" class="project-box">
+      <img src="projekt6.jpg" alt="Projekt 6">
       <div class="project-top-overlay"><div class="project-title">Projekt 6</div></div>
     </a>
-      </a>
-    <a href="projekt4/" class="project-box" style="background-image: url('projekt4.jpg');">
+     <a href="projekt4/" class="project-box">
+      <img src="projekt4.jpg" alt="Projekt 4">
       <div class="project-top-overlay"><div class="project-title">Projekt 4</div></div>
     </a>
-    <a href="projekt5/" class="project-box" style="background-image: url('projekt5.jpg');">
+    <a href="projekt5/" class="project-box">
+      <img src="projekt5.jpg" alt="Projekt 5">
       <div class="project-top-overlay"><div class="project-title">Projekt 5</div></div>
     </a>
-    <a href="projekt6/" class="project-box" style="background-image: url('projekt6.jpg');">
+    <a href="projekt6/" class="project-box">
+      <img src="projekt6.jpg" alt="Projekt 6">
       <div class="project-top-overlay"><div class="project-title">Projekt 6</div></div>
     </a>
   </div>
