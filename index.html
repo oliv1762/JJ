@@ -51,7 +51,6 @@
       color: #555;
     }
 
-    /* Forhindrer uønsket horisontal scroll */
     html, body {
       margin: 0;
       padding: 0;
@@ -65,7 +64,6 @@
       position: relative;
     }
 
-    /* Baggrundsbillede med gennemsigtighed */
     body::before {
       content: "";
       position: fixed;
@@ -91,6 +89,12 @@
       z-index: 1000;
       gap: 15px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease; /* ← tilføjet */
+    }
+
+    /* Når header skjules */
+    header.hide {
+      transform: translateY(-100%); /* ← tilføjet */
     }
 
     .logo {
@@ -162,7 +166,7 @@
       margin-top: 0px;
     }
 
-    /* Footer med LinkedIn-ikon */
+    /* Footer */
     .footer {
       display: flex;
       justify-content: center;
@@ -188,7 +192,6 @@
       opacity: 0.8;
     }
 
-    /* Mobilvenlig */
     @media (max-width: 600px) {
       .projects {
         padding: 50px 50px;
@@ -218,34 +221,30 @@
   <!-- Topbar med logo og navigation -->
   <div class="header-wrapper">
     <header>
-      <a href="/"><img src="LOGO-T-21.png" alt="Logo" class="logo" /></a>
-      <div class="header-text">
-        <div class="line1">Cand.arch. MAA, Byplanlægger</div>
-        <div class="line2">Oliver Juul Jensen</div>
-        <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk" style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
-        <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
-      </div>
+      <a href="/"><img src="..." class="logo"></a>
+      <!-- din øvrige navigation -->
     </header>
   </div>
 
-  <!-- Projekttitel -->
-  <h2 class="projects-title">Udvalgte projekter</h2>
-<section style="max-width: 900px; margin: 60px auto;">
-  <h2 style="font-family: 'Futura', sans-serif; font-size: 24px; margin-bottom: 20px;">
-    Portfolio (PDF)
-  </h2>
-  <embed src="Portfolio - Oliver Juul Jensen - Komprimeret.pdf" 
-         type="application/pdf" 
-         width="100%" 
-         height="800px" />
+  <!-- dit indhold her -->
 
+  <!-- Scroll-hide script -->
+  <script>
+    let lastScroll = 0;
+    const header = document.querySelector("header");
 
-  <!-- Footer med LinkedIn -->
-  <footer class="footer">
-    <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
-      <img src="LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
-    </a>
-  </footer>
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > lastScroll) {
+        header.classList.add("hide");   // Scroll ned → skjul
+      } else {
+        header.classList.remove("hide"); // Scroll op → vis
+      }
+
+      lastScroll = currentScroll;
+    });
+  </script>
 
 </body>
 </html>
