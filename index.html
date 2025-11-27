@@ -70,7 +70,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 25px;
-      padding: 100px 60px 120px 60px; /* ens luft over og under */
+      padding: 120px 60px 120px 100px; /* ens luft over og under */
       margin: 0 auto;
     }
     .project-box {
@@ -81,7 +81,7 @@
       cursor: pointer;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: block; /* gør linket blok-level */
+      display: block;
       text-decoration: none;
       color: inherit;
     }
@@ -153,20 +153,7 @@
   <a href="projekt6/" class="project-box" style="background-image: url('project3.jpg');">
     <div class="project-overlay"><div class="project-title">Projekt 6</div></div>
   </a>
-
-  <a href="projekt7/" class="project-box" style="background-image: url('project1.jpg');">
-    <div class="project-overlay"><div class="project-title">Projekt 7</div></div>
-  </a>
-
-  <a href="projekt8/" class="project-box" style="background-image: url('project2.jpg');">
-    <div class="project-overlay"><div class="project-title">Projekt 8</div></div>
-  </a>
-
-  <a href="projekt9/" class="project-box" style="background-image: url('project3.jpg');">
-    <div class="project-overlay"><div class="project-title">Projekt 9</div></div>
-  </a>
 </div>
-
 
   <!-- Footer -->
   <footer class="footer" id="footer">
@@ -179,13 +166,14 @@
     let lastScroll = 0;
     const header = document.getElementById('header');
     const footer = document.getElementById('footer');
+    const headerHeight = header.offsetHeight; // dynamisk højde
 
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset;
 
       // Header skjul/vis
-      if (currentScroll > lastScroll && currentScroll > 100) {
-        header.style.top = '-120px';
+      if (currentScroll > lastScroll && currentScroll > 50) {
+        header.style.top = `-${headerHeight}px`; // skjul hele headeren
       } else {
         header.style.top = '0';
       }
