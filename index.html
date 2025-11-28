@@ -279,26 +279,19 @@ Vayreda School </div></div>
     </a>
   </footer>
 
+ 
   <script>
-    let lastScroll = 0;
-    const header = document.getElementById('header');
-    const footer = document.getElementById('footer');
-    const headerHeight = header.offsetHeight;
+  const header = document.querySelector('.header-wrapper');
 
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-      // Header skjul/vis
-      if (currentScroll > lastScroll && currentScroll > 50) {
-        header.style.top = `-${headerHeight}px`;
-      } else {
-        header.style.top = '0';
-      }
-      lastScroll = currentScroll;
-
-      // Footer vis kun i bunden
-      const scrollBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 10;
-      footer.style.bottom = scrollBottom ? '0' : '-100px';
-    });
-  </script>
+  window.addEventListener('scroll', () => {
+    if(window.scrollY === 0){
+      // Hvis vi er helt i toppen
+      header.style.transform = 'translateY(0)';
+    } else {
+      // Ellers skjul header
+      header.style.transform = 'translateY(-100%)';
+    }
+  });
+</script>
 </body>
 </html>
