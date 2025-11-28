@@ -117,7 +117,13 @@
 
     .linkedin-icon { width: 40px; height: auto; transition: transform 0.3s ease, opacity 0.3s ease; cursor: crosshair; }
     .linkedin-icon:hover { transform: scale(1.1); opacity: 0.8; }
-
+@media (max-width: 600px) {
+  .Dtekst-small {
+    max-width: 90%;       /* fylder næsten hele skærmbredden */
+    margin: 18px auto 30px auto; /* centreres og mindre bundmargin */
+    padding: 0 10px;      /* lidt luft til siderne */
+  }
+}
     /* Mobile Header & Responsive */
     @media (max-width: 480px) {
       .header-wrapper { flex-direction: column; align-items: flex-start; padding: 10px 15px; }
