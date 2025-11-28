@@ -197,7 +197,7 @@
     Den formåede ikke at tage højde for den menneskelige skala.</p>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer id="footer" class="footer">
     <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
       <img src="../LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
     </a>
@@ -206,17 +206,22 @@
   <!-- Header scroll script -->
 <script>
   const header = document.querySelector('.header-wrapper');
+  const footer = document.getElementById('footer');
 
   window.addEventListener('scroll', () => {
-    if(window.scrollY === 0){
-      // Hvis vi er helt i toppen
+    // Header: vis kun når vi er helt i toppen
+    if (window.scrollY === 0) {
       header.style.transform = 'translateY(0)';
     } else {
-      // Ellers skjul header
       header.style.transform = 'translateY(-100%)';
     }
+
+    // Footer: vis kun når vi er i bunden
+    const scrollBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 10;
+    footer.style.bottom = scrollBottom ? '0' : '-100px';
   });
 </script>
+
 
 </body>
 </html>
