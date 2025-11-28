@@ -188,19 +188,19 @@
   </footer>
 
   <!-- Header scroll script -->
-  <script>
-    let lastScroll = 0;
-    const header = document.querySelector('.header-wrapper');
+<script>
+  const header = document.querySelector('.header-wrapper');
 
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-      if(currentScroll > lastScroll && currentScroll > 50){
-        header.style.transform = 'translateY(-100%)';
-      } else {
-        header.style.transform = 'translateY(0)';
-      }
-      lastScroll = currentScroll;
-    });
-  </script>
+  window.addEventListener('scroll', () => {
+    if(window.scrollY === 0){
+      // Hvis vi er helt i toppen
+      header.style.transform = 'translateY(0)';
+    } else {
+      // Ellers skjul header
+      header.style.transform = 'translateY(-100%)';
+    }
+  });
+</script>
+
 </body>
 </html>
