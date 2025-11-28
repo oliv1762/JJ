@@ -94,7 +94,8 @@
       padding: 0 10px;
       line-height: 1.5;
     }
-    .Dtekst-small { font-size: 12px; max-width: 450px; margin: 18px auto 60px auto; }
+    .Dtekst-small 
+    { font-size: 12px; max-width: 450px; margin: 18px auto 60px auto; }
 
     /* Billeder med intelligent skalering */
     .full-width-image-wrapper { margin: 20px auto; padding: 0 100px; box-sizing: border-box; text-align: center; }
@@ -116,29 +117,17 @@
 
     .linkedin-icon { width: 40px; height: auto; transition: transform 0.3s ease, opacity 0.3s ease; cursor: crosshair; }
     .linkedin-icon:hover { transform: scale(1.1); opacity: 0.8; }
-
-    /* Dtekst-small på mobil */
-    @media (max-width: 600px) {
-      .Dtekst-small {
-        max-width: 90%;
-        margin: 18px auto 30px auto;
-        padding: 0 10px;
-      }
-    }
-
+@media (max-width: 600px) {
+  .Dtekst-small {
+    max-width: 90%;       /* fylder næsten hele skærmbredden */
+    margin: 18px auto 30px auto; /* centreres og mindre bundmargin */
+    padding: 0 10px;      /* lidt luft til siderne */
+  }
+}
     /* Mobile Header & Responsive */
     @media (max-width: 480px) {
-      .header-wrapper {
-        flex-direction: column; 
-        align-items: flex-start; 
-        padding: 10px 15px; /* matcher første index-fil */
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 15px; /* matcher første index-fil */
-        gap: 0.8rem;        /* lidt luft mellem logo og tekst */
-      }
+      .header-wrapper { flex-direction: column; align-items: flex-start; padding: 10px 15px; }
+      header { flex-direction: column; align-items: flex-start; padding: 10px 0; gap: 5px; }
       .logo { height: 55px; }
       .header-text { font-size: 8px; max-width: 100%; gap: 0.8px; }
       .line1 { font-size: 10px; }
@@ -188,14 +177,14 @@
   </div>
 
   <h3 class="Dtekst-bold">Et nyt ophold</h3>
-  <p class="Dtekst Dtekst-small">Den nye gader opstår mellem de ældre renoverede boliger og de nyanlagte boliger...</p>
+  <p class="Dtekst Dtekst-small">Den nye gader opstår mellem de ældre renoverede boliger og de nyanlagte boliger. Montagecirkulæret fra 1960’erne gjorde det muligt hurtigt at opfylde efterkrigstidens behov for almene boliger. Dog havde denne rationalisering af byggebranchen også negativ effekt. Den formåede ikke at tage højde for den menneskelige skala.</p>
 
   <div class="full-width-image-wrapper">
     <img src="Byggekatalog-02.jpg" alt="Billede" style="max-width: 100%; max-height: 600px; height: auto; width: auto; display: block; margin: 0 auto;" />
   </div>
 
   <h3 class="Dtekst-bold">Byggekatalog</h3>
-  <p class="Dtekst Dtekst-small">Den nye gader opstår mellem de ældre renoverede boliger og de nyanlagte boliger...</p>
+  <p class="Dtekst Dtekst-small">Den nye gader opstår mellem de ældre renoverede boliger og de nyanlagte boliger. Montagecirkulæret fra 1960’erne gjorde det muligt hurtigt at opfylde efterkrigstidens behov for almene boliger. Dog havde denne rationalisering af byggebranchen også negativ effekt. Den formåede ikke at tage højde for den menneskelige skala.</p>
 
   <div class="full-width-image-wrapper"> 
     <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" style="max-width: 100%; max-height: 200px; height: auto; width: auto; display: block; margin: 0 auto;" /> 
@@ -208,18 +197,20 @@
     </a>
   </footer>
 
-  <!-- Scroll script -->
+  <!-- Scroll script: header vises kun i toppen, footer vises i bunden -->
   <script>
     const header = document.querySelector('.header-wrapper');
     const footer = document.getElementById('footer');
 
     window.addEventListener('scroll', () => {
+      // Header: vis kun når vi er helt i toppen
       if (window.scrollY === 0) {
         header.style.transform = 'translateY(0)';
       } else {
         header.style.transform = 'translateY(-100%)';
       }
 
+      // Footer: vis kun når vi er i bunden
       const scrollBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 10;
       footer.style.bottom = scrollBottom ? '0' : '-100px';
     });
