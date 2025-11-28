@@ -83,18 +83,6 @@
       line-height: 1.5;
     }
 
-    /* Overskrift “Et nyt ophold” som tidligere font, mindre størrelse */
-    .projekt-overskrift {
-      font-family: 'Futura', sans-serif;
-      font-weight: bold;
-      font-size: 24px;  /* mindre end tidligere */
-      margin-top: 60px;
-      margin-bottom: 30px;
-      line-height: 1.2;
-      color: inherit;
-      text-align: left;
-    }
-
     /* Billeder med intelligent skalering */
     .full-width-image-wrapper {
       margin: 20px auto;
@@ -104,20 +92,10 @@
     }
 
     .full-width-image-wrapper img {
-      width: 100%;
-      height: auto;
-      max-width: none;
+      width: 100%;       /* Fylder bredden af container */
+      height: auto;      /* Bevarer proportioner */
+      max-width: none;   /* Fjern begrænsning på store billeder */
       display: inline-block;
-    }
-
-    /* Specifikt max-height for “Resedavej” billedet */
-    .resedavej-img {
-      max-height: 500px;
-      object-fit: contain;
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
     }
 
     /* Footer */
@@ -151,8 +129,6 @@
       .overskrift { font-size: 20px; }
       .Dtekst { font-size: clamp(10px, 2.5vw, 16px); }
       .full-width-image-wrapper { padding: 0 30px; }
-      .projekt-overskrift { font-size: 20px; }
-      .resedavej-img { max-height: 350px; }
     }
   </style>
 </head>
@@ -190,12 +166,11 @@
     <img src="../Image2.jpg" alt="Billede" />
   </div>
 
-  <!-- Et nyt ophold -->
-  <h2 class="projekt-overskrift">ET NYT OPHOLD</h2>
+  <h2 class="Doverskrift">ET NYT OPHOLD</h2>
   <p class="Dtekst">Den nye gader opstår mellem de ældre renoverede boliger og de nyanlagte boliger. Montagecirkulæret fra 1960’erne gjorde det muligt hurtigt at opfylde efterkrigstidens behov for almene boliger. Dog havde denne rationalisering af byggebranchen også negativ effekt. Den formåede ikke at tage højde for den menneskelige skala.</p>
 
   <div class="full-width-image-wrapper">
-    <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" class="resedavej-img" />
+    <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" />
   </div>
 
   <!-- Footer -->
