@@ -22,7 +22,7 @@
       cursor: crosshair;
       position: relative;
       padding-top: 100px;
-       padding-bottom: 120px; 
+      padding-bottom: 120px;
     }
 
     body::before {
@@ -48,7 +48,13 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    header { display: flex; align-items: flex-end; padding: 20px 100px; gap: 15px; }
+    header {
+      display: flex; 
+      align-items: flex-end; 
+      padding: 20px 100px; 
+      gap: 15px; 
+      flex-wrap: wrap;
+    }
 
     .logo { height: 110px; cursor: crosshair; user-select: none; -webkit-user-drag: none; }
 
@@ -69,13 +75,9 @@
     .nummer { font-size: 60px; font-weight: bold; line-height: 1; margin-bottom: 10px; }
     .overskrift { font-size: 28px; font-weight: bold; }
     .spaltetekst { column-count: 2; column-gap: 40px; font-size: 14px; line-height: 1.6; color: #333; }
-    
+
     /* Tekst efter billeder */
-    .Doverskrift, .Dtekst {
-      text-align: center;
-      margin: 0 auto;
-      max-width: 800px;
-    }
+    .Doverskrift, .Dtekst { text-align: center; margin: 0 auto; max-width: 800px; }
     .Dtekst-bold {
       font-family: 'EB Garamond', serif;
       font-size: clamp(12px, 1.2vw, 16px);
@@ -92,26 +94,11 @@
       padding: 0 10px;
       line-height: 1.5;
     }
-    .Dtekst-small {
-      font-size: 12px;
-      max-width: 450px;
-      margin: 18px auto 30 auto;
-    }
+    .Dtekst-small { font-size: 12px; max-width: 450px; margin: 18px auto 30px auto; }
 
     /* Billeder med intelligent skalering */
-    .full-width-image-wrapper {
-      margin: 20px auto;
-      padding: 0 100px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
-    .full-width-image-wrapper img {
-      width: 100%;
-      height: auto;
-      max-width: none;
-      display: inline-block;
-    }
+    .full-width-image-wrapper { margin: 20px auto; padding: 0 100px; box-sizing: border-box; text-align: center; }
+    .full-width-image-wrapper img { width: 100%; height: auto; max-width: none; display: inline-block; }
 
     /* Footer */
     .footer {
@@ -120,7 +107,6 @@
       background-color: white;
       box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
       z-index: 1000;
-      margin-top: 40px;
       position: fixed;
       left: 0;
       width: 100%;
@@ -128,27 +114,24 @@
       transition: bottom 0.3s ease;
     }
 
-    .linkedin-icon {
-      width: 40px; height: auto;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      cursor: crosshair;
-    }
-
+    .linkedin-icon { width: 40px; height: auto; transition: transform 0.3s ease, opacity 0.3s ease; cursor: crosshair; }
     .linkedin-icon:hover { transform: scale(1.1); opacity: 0.8; }
 
-    /* Media queries */
-    @media (max-width: 600px) {
-      header { flex-direction: row; align-items: center; padding: 0 30px; }
-      .header-text { font-size: 8px; gap: 0.85px; }
-      .line1 { font-size: 8px; } .line2 { font-size: 6px; }
+    /* Mobile Header & Responsive */
+    @media (max-width: 480px) {
+      .header-wrapper { flex-direction: column; align-items: flex-start; padding: 10px 15px; }
+      header { flex-direction: column; align-items: flex-start; padding: 10px 0; gap: 5px; }
       .logo { height: 55px; }
+      .header-text { font-size: 8px; max-width: 100%; gap: 0.8px; }
+      .line1 { font-size: 10px; }
+      .line2 { font-size: 8px; }
 
-      .content-section { padding: 50px 30px; flex-direction: column; }
+      .content-section { padding: 50px 20px; flex-direction: column; }
       .spaltetekst { font-size: 10px; column-count: 1; }
       .nummer { font-size: 36px; }
       .overskrift { font-size: 20px; }
       .Dtekst { font-size: clamp(10px, 2.5vw, 16px); }
-      .full-width-image-wrapper { padding: 0 30px; }
+      .full-width-image-wrapper { padding: 0 20px; }
     }
   </style>
 </head>
@@ -189,15 +172,6 @@
   <h3 class="Dtekst-bold">Et nyt ophold</h3>
   <p class="Dtekst Dtekst-small">Den nye gader opstår mellem de ældre renoverede boliger og de nyanlagte boliger. Montagecirkulæret fra 1960’erne gjorde det muligt hurtigt at opfylde efterkrigstidens behov for almene boliger. Dog havde denne rationalisering af byggebranchen også negativ effekt. Den formåede ikke at tage højde for den menneskelige skala.</p>
 
-  <div class="full-width-image-wrapper">
-    <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" style="max-width: 100%; max-height: 200px; height: auto; width: auto; display: block; margin: 0 auto;" />
-  </div>
-<h3 class="Dtekst-bold">Et nyt ophold</h3>
-  <p class="Dtekst Dtekst-small">Den nye gader opstår mellem de ældre renoverede boliger og de nyanlagte boliger. Montagecirkulæret fra 1960’erne gjorde det muligt hurtigt at opfylde efterkrigstidens behov for almene boliger. Dog havde denne rationalisering af byggebranchen også negativ effekt. Den formåede ikke at tage højde for den menneskelige skala.</p>
-
-  <div class="full-width-image-wrapper">
-    <img src="../Resedavej%20-%20mapping%20-%204-01.jpg" alt="Billede" style="max-width: 100%; max-height: 200px; height: auto; width: auto; display: block; margin: 0 auto;" />
-  </div>
   <!-- Footer -->
   <footer id="footer" class="footer">
     <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
@@ -223,6 +197,5 @@
       footer.style.bottom = scrollBottom ? '0' : '-100px';
     });
   </script>
-
 </body>
 </html>
