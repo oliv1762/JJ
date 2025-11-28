@@ -54,7 +54,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 1000;
       gap: 15px;
-      transition: top 1s ease;
+      transition: transform 0.5s ease;
       flex-wrap: wrap;
     }
 
@@ -99,30 +99,31 @@
     }
 
     /* Projekter - dynamiske bredder med fixed height */
-.projects {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  padding-top: 120px;
-  padding-left: 120px; /* juster så den flugter med logoets venstre kant */
-  padding-right: 60px;
-  padding-bottom: 120px;
-  margin: 0 auto;
-  justify-content: flex-start; /* så de starter fra venstre */
-}
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      padding-top: 120px;
+      padding-left: 120px; 
+      padding-right: 60px;
+      padding-bottom: 120px;
+      margin: 0 auto;
+      justify-content: flex-start; 
+    }
+
     .project-box {
       position: relative;
       display: block;
-      height: 250px;         /* fast højde */
+      height: 250px;         
       overflow: hidden;
       cursor: crosshair;
-      flex: 0 0 auto;        /* bredden følger billedets proportion */
+      flex: 0 0 auto;       
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .project-box img {
-      height: 100%;          /* fylder højde */
-      width: auto;           /* bredde følger billedets proportion */
+      height: 100%;         
+      width: auto;          
       display: block;
     }
 
@@ -131,7 +132,6 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
-    /* Top overlay til hover */
     .project-top-overlay {
       position: absolute;
       top: 0;
@@ -199,7 +199,6 @@
       .project-top-overlay { height: 40px; padding-left: 10px; }
       .project-top-overlay .project-title { font-size: 14px; }
     }
-
   </style>
 </head>
 <body>
@@ -220,21 +219,18 @@
       <img src="projekt1.jpg" alt="Projekt 1">
       <div class="project-top-overlay"><div class="project-title">Reseda-og lupinvej</div></div>
     </a>
-    
     <a href="projekt2/" class="project-box">
       <img src="t1.png" alt="Projekt 2">
       <div class="project-top-overlay"><div class="project-title">Thomasminde</div></div>
     </a>
-    
     <a href="projekt2/" class="project-box">
       <img src="projekt2.jpg" alt="Projekt 2">
       <div class="project-top-overlay"><div class="project-title">Projekt 2</div></div>
     </a>
-     <a href="projekt2/" class="project-box">
+    <a href="projekt2/" class="project-box">
       <img src="Warm spaces.jpg" alt="Projekt 2">
       <div class="project-top-overlay"><div class="project-title">Warm spaces</div></div>
     </a>
- 
     <a href="projekt3/" class="project-box">
       <img src="e2.jpg" alt="Projekt 3">
       <div class="project-top-overlay"><div class="project-title">Exners plads</div></div>
@@ -243,11 +239,9 @@
       <img src="Coffe.jfif" alt="Projekt 4">
       <div class="project-top-overlay"><div class="project-title">Kaffegrums</div></div>
     </a>
-
-        <a href="projekt4/" class="project-box">
+    <a href="projekt4/" class="project-box">
       <img src="spanishmodel.jpg" alt="Model">
-      <div class="project-top-overlay"><div class="project-title">Montserrat 
-Vayreda School </div></div>
+      <div class="project-top-overlay"><div class="project-title">Montserrat Vayreda School </div></div>
     </a>
     <a href="projekt5/" class="project-box">
       <img src="IMG_9482.JPG" alt="Møbel">
@@ -257,19 +251,18 @@ Vayreda School </div></div>
       <img src="Church.jpg" alt="Reuse the Church">
       <div class="project-top-overlay"><div class="project-title">Reuse the Church</div></div>
     </a>
-      <a href="projekt5/" class="project-box">
+    <a href="projekt5/" class="project-box">
       <img src="f1.jpg" alt="Frederiksbjerg Skole SV">
       <div class="project-top-overlay"><div class="project-title">Frederiksbjerg Skole SV</div></div>
     </a>
-      <a href="projekt5/" class="project-box">
-      <img src="Strategisk helhedsplan for Årslev samt Natura 2000.jpg" alt="Frederiksbjerg Skole SV">
+    <a href="projekt5/" class="project-box">
+      <img src="Strategisk helhedsplan for Årslev samt Natura 2000.jpg" alt="Årslev">
       <div class="project-top-overlay"><div class="project-title">Årslev</div></div>
     </a>
- <a href="projekt5/" class="project-box">
-      <img src="lyngby.jpg" alt="Frederiksbjerg Skole SV">
+    <a href="projekt5/" class="project-box">
+      <img src="lyngby.jpg" alt="Lyngby">
       <div class="project-top-overlay"><div class="project-title">Lyngby</div></div>
     </a>
-    
   </div>
 
   <!-- Footer -->
@@ -279,23 +272,20 @@ Vayreda School </div></div>
     </a>
   </footer>
 
+  <!-- Scroll script: header vises kun i toppen, footer vises i bunden -->
   <script>
-    let lastScroll = 0;
     const header = document.getElementById('header');
     const footer = document.getElementById('footer');
-    const headerHeight = header.offsetHeight;
 
     window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-      // Header skjul/vis
-      if (currentScroll > lastScroll && currentScroll > 50) {
-        header.style.top = `-${headerHeight}px`;
+      // Header: vis kun når vi er helt i toppen
+      if (window.scrollY === 0) {
+        header.style.transform = 'translateY(0)';
       } else {
-        header.style.top = '0';
+        header.style.transform = 'translateY(-100%)';
       }
-      lastScroll = currentScroll;
 
-      // Footer vis kun i bunden
+      // Footer: vis kun når vi er i bunden
       const scrollBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 10;
       footer.style.bottom = scrollBottom ? '0' : '-100px';
     });
