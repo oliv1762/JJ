@@ -1,4 +1,169 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OJJ - Projekt 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../LOGO-T-21.png">
 
+  <style>
+    @font-face {
+      font-family: 'Futura';
+      src: local('Futura'), url('Futura.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    html, body { margin: 0; padding: 0; overflow-x: hidden; }
+    body {
+      background-color: white;
+      font-family: 'Futura', sans-serif;
+      cursor: crosshair;
+      position: relative;
+      padding-top: 100px;
+      padding-bottom: 120px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('BG-J100.png');
+      background-repeat: repeat;
+      background-size: 100px 200px;
+      opacity: 0.2;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Header */
+    .header-wrapper {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      transition: transform 0.5s ease;
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header {
+      display: flex; 
+      align-items: flex-end; 
+      padding: 20px 100px; 
+      gap: 15px; 
+      flex-wrap: wrap;
+    }
+
+    .logo { height: 110px; cursor: crosshair; user-select: none; -webkit-user-drag: none; }
+
+    .header-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 300px;
+      gap: 1.9px;
+    }
+
+    .line1 { font-weight: bold; font-size: 16px; }
+    .line2 { font-size: 12px; color: #555; }
+
+    /* Content section */
+    .content-section { display: flex; justify-content: space-between; gap: 50px; padding: 100px 100px; align-items: flex-start; }
+    .text-section { flex: 1; }
+    .nummer { font-size: 60px; font-weight: bold; line-height: 1; margin-bottom: 10px; }
+    .overskrift { font-size: 28px; font-weight: bold; }
+    .spaltetekst { column-count: 2; column-gap: 40px; font-size: 14px; line-height: 1.6; color: #333; }
+
+    /* Tekst efter billeder */
+    .Doverskrift, .Dtekst { text-align: center; margin: 0 auto; max-width: 800px; }
+    .Dtekst-bold {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(12px, 1.2vw, 16px);
+      font-weight: bold;
+      text-align: center;
+      max-width: 450px;
+      margin: 10px auto 5px auto;
+      line-height: 1.5;
+    }
+    .Doverskrift { margin: 0px auto 15px auto; }
+    .Dtekst {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(12px, 1.2vw, 16px);
+      padding: 0 10px;
+      line-height: 1.5;
+    }
+    .Dtekst-small 
+    { font-size: 12px; max-width: 450px; margin: 18px auto 60px auto; }
+
+    /* Billeder med intelligent skalering */
+    .full-width-image-wrapper { margin: 20px auto; padding: 0 100px; box-sizing: border-box; text-align: center; }
+    .full-width-image-wrapper img { width: 100%; height: auto; max-width: none; display: inline-block; }
+
+    /* Footer */
+    .footer {
+      display: flex; justify-content: center; align-items: center;
+      padding: 15px 0;
+      background-color: white;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+      position: fixed;
+      left: 0;
+      width: 100%;
+      bottom: -100px;
+      transition: bottom 0.3s ease;
+    }
+
+    .linkedin-icon { width: 40px; height: auto; transition: transform 0.3s ease, opacity 0.3s ease; cursor: crosshair; }
+    .linkedin-icon:hover { transform: scale(1.1); opacity: 0.8; }
+@media (max-width: 600px) {
+  .Dtekst-small {
+    max-width: 90%;       /* fylder næsten hele skærmbredden */
+    margin: 18px auto 30px auto; /* centreres og mindre bundmargin */
+    padding: 0 10px;      /* lidt luft til siderne */
+  }
+}
+    /* Mobile Header & Responsive */
+    @media (max-width: 480px) {
+      .header-wrapper { flex-direction: column; align-items: flex-start; padding: 10px 15px; }
+      header { flex-direction: column; align-items: flex-start; padding: 10px 0; gap: 5px; }
+      .logo { height: 55px; }
+      .header-text { font-size: 8px; max-width: 100%; gap: 0.8px; }
+      .line1 { font-size: 10px; }
+      .line2 { font-size: 8px; }
+
+      .content-section { padding: 50px 20px; flex-direction: column; }
+      .spaltetekst { font-size: 10px; column-count: 1; }
+      .nummer { font-size: 36px; }
+      .overskrift { font-size: 20px; }
+      .Dtekst { font-size: clamp(10px, 2.5vw, 16px); }
+      .full-width-image-wrapper { padding: 0 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <div class="header-wrapper">
+    <header>
+      <a href="/"><img src="../LOGO-T-21.png" alt="Logo" class="logo" /></a>
+      <div class="header-text">
+        <div class="line1">Cand.arch. MAA, Byplanlægger</div>
+        <div class="line2">Oliver Juul Jensen</div>
+        <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk" style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
+        <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Content -->
+  <section class="content-section">
+    <div class="text-section">
+      <div class="nummer">02</div>
+      <div class="overskrift">Thomasminde</div>
+      <div class="spaltetekst">
+        <p>   
 The most important value of a space is its users.
 
 That is exactly why this design proposal has been developed based on the immediate neighbors of Exner’s Square—a square that can create a new, more public entrance to Aarhus K.
@@ -6,3 +171,60 @@ The square is designed based on the neighbors’ wishes for facilities, as well 
 This approach has been developed through interviews with stakeholders, meetings with Aarhus Kommune, and visits to Aarhus Municipality’s Material Bank.
 Thus, the materials used are based on existing, available resources.
 The result is three zones, with edge zones adapted to create a common space for public life.
+      </p>
+        <p>
+...
+        </p>
+       
+      </div>
+    </div>
+  </section>
+
+  <div class="full-width-image-wrapper">
+    <img src="Opstalt-03.jpg" alt="Billede" />
+  </div>
+
+  <div class="full-width-image-wrapper">
+    <img src="Opstalt-02.jpg" alt="Billede" style="max-width: 100%; height: auto; width: auto; display: block; margin: 0 auto;" />
+  </div>
+
+  <div class="full-width-image-wrapper"> 
+    <img src="Opstalt-05.jpg" alt="Billede" /> 
+  </div>
+<div class="full-width-image-wrapper"> 
+    <img src="Akso.png" alt="Billede" style="max-width: 100%; max-height: 600px; height: auto; width: auto; display: block; margin: 0 auto;" /> 
+  </div>
+  <h3 class="Dtekst-bold">En ny niche</h3>
+  <p class="Dtekst Dtekst-small">Ved et skyde vægen tilbage skabes der forbindelse mellem gårdrummet og længen
+  </p>
+
+  <div class="full-width-image-wrapper">
+    <img src="IMG_6218.JPG" alt="Billede" />
+  </div>
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
+      <img src="../LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
+    </a>
+  </footer>
+
+  <!-- Scroll script: header vises kun i toppen, footer vises i bunden -->
+  <script>
+    const header = document.querySelector('.header-wrapper');
+    const footer = document.getElementById('footer');
+
+    window.addEventListener('scroll', () => {
+      // Header: vis kun når vi er helt i toppen
+      if (window.scrollY === 0) {
+        header.style.transform = 'translateY(0)';
+      } else {
+        header.style.transform = 'translateY(-100%)';
+      }
+
+      // Footer: vis kun når vi er i bunden
+      const scrollBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 10;
+      footer.style.bottom = scrollBottom ? '0' : '-100px';
+    });
+  </script>
+</body>
+</html>
