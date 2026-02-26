@@ -112,19 +112,19 @@
     }
 
     .project-box {
-      position: relative;
-      display: block;
-      height: 250px;         
-      overflow: hidden;
-      cursor: crosshair;
-      flex: 0 0 auto;       
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column; /* tekst under billedet */
+      width: 300px;
+      text-decoration: none;
+      color: inherit;
+    
     }
-
+    .project-info {
+      padding-top: 5px;
+    }
     .project-box img {
-      height: 100%;         
-      width: auto;          
-      display: block;
+      height: auto;         
+      width: 100%;          
     }
 
     .project-box:hover {
@@ -156,7 +156,9 @@
       color: rgba(0,0,0,0);
       transition: color 1.2s ease;
     }
-
+    .project-desc {
+        font-size: 14px;
+        color: #555;
     .project-box:hover .project-top-overlay .project-title {
       color: rgba(0,0,0,1);
     }
