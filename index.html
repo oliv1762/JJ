@@ -191,7 +191,7 @@
       .project-box { height: 200px; }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       header {
         flex-direction: column;
         align-items: flex-start;
@@ -205,6 +205,25 @@
       .project-box { height: 150px; }
       .project-top-overlay { height: 40px; padding-left: 10px; }
       .project-top-overlay .project-title { font-size: 14px; }
+       @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+      }
+      .logo { height: 55px; }
+      .header-text { font-size: 8px; max-width: 100%; gap: 0.8px; }
+      .line1 { font-size: 10px; }
+      .line2 { font-size: 8px; }
+      .projects {
+    column-count: 1;     /* 1 kolonne på mobil */
+    padding: 120px 20px;
+    column-gap: 0;       /* ikke nødvendigt med kolonne-gap */
+  }
+      .project-box { width: 100%; }
+      .project-top-overlay { height: 40px; padding-left: 10px; }
+      .project-top-overlay .project-title { font-size: 14px; }
+    }
     }
   </style>
 </head>
