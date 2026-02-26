@@ -1,294 +1,87 @@
-<!DOCTYPE html>
-<html lang="da">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OJJ - Portfolio</title>
-  <link rel="icon" type="image/png" href="LOGO-T-21.png">
-  <style>
-    @font-face {
-      font-family: 'Futura';
-      src: local('Futura'), url('Futura.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-
-    body {
-      padding-top: 100px;
-      font-family: 'Futura', sans-serif;
-      cursor: crosshair;
-      position: relative;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('BG-J100.png');
-      background-repeat: repeat;
-      background-size: 100px 200px;
-      opacity: 0.2;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* Header */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      align-items: flex-end;
-      padding: 20px 100px;
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      z-index: 1000;
-      gap: 15px;
-      transition: transform 0.5s ease;
-      flex-wrap: wrap;
-    }
-
-    .logo { height: 110px; cursor: crosshair; }
-
-    .header-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      max-width: 300px;
-      gap: 1.9px;
-    }
-
-    .line1 { font-weight: bold; font-size: 16px; }
-    .line2 { font-size: 12px; color: #555; }
-
-    /* Footer */
-    .footer {
-      position: fixed;
-      bottom: -100px;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0;
-      background: white;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
-      transition: bottom 0.3s ease;
-    }
-
-    .linkedin-icon {
-      width: 40px;
-      cursor: crosshair;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .linkedin-icon:hover {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
-
-    /* Projekter - dynamiske bredder med fixed height */
-    .projects {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 25px;
-      padding-top: 120px;
-      padding-left: 100px; 
-      padding-right: 60px;
-      padding-bottom: 120px;
-      margin: 0 auto;
-      justify-content: flex-start; 
-    }
-
-    .project-box {
-      position: relative;
-      display: block;
-      height: 250px;         
-      overflow: hidden;
-      cursor: crosshair;
-      flex: 0 0 auto;       
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .project-box img {
-      height: 100%;         
-      width: auto;          
-      display: block;
-    }
-
-    .project-box:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-
-    .project-top-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background: rgba(255,255,255,0);
-      transition: background 1.2s ease;
-      display: flex;
-      align-items: center;
-      padding-left: 15px;
-    }
-
-    .project-box:hover .project-top-overlay {
-      background: rgba(255,255,255,1);
-    }
-
-    .project-top-overlay .project-title {
-      font-family: 'Futura', sans-serif;
-      font-weight: bold;
-      font-size: 20px;
-      color: rgba(0,0,0,0);
-      transition: color 1.2s ease;
-    }
-
-    .project-box:hover .project-top-overlay .project-title {
-      color: rgba(0,0,0,1);
-    }
-
-    /* RESPONSIVE STYLES */
-    @media (max-width: 1024px) {
-      header {
-        padding: 20px 50px;
-      }
-      .projects {
-        padding: 120px 40px 120px 40px;
-        gap: 20px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 15px 30px;
-      }
-      .logo { height: 80px; }
-      .header-text { max-width: 200px; gap: 1px; }
-      .line1 { font-size: 14px; }
-      .line2 { font-size: 10px; }
-      .projects { padding: 120px 20px 120px 20px; gap: 15px; }
-      .project-box { height: 200px; }
-    }
-
-    @media (max-width: 480px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 15px;
-      }
-      .logo { height: 55px; }
-      .header-text { font-size: 8px; max-width: 100%; gap: 0.8px; }
-      .line1 { font-size: 10px; }
-      .line2 { font-size: 8px; }
-      .projects { padding: 100px 10px 80px 10px; gap: 10px; justify-content: center; }
-      .project-box { height: 150px; }
-      .project-top-overlay { height: 40px; padding-left: 10px; }
-      .project-top-overlay .project-title { font-size: 14px; }
-    }
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <header id="header">
-    <a href="/"><img src="LOGO-T-21.png" alt="Logo" class="logo" /></a>
-    <div class="header-text">
-      <div class="line1">Cand.arch. MAA, Byplanlægger</div>
-      <div class="line2">Oliver Juul Jensen</div>
-      <div class="line2">Mail: <a href="mailto:oliverjuuljensen@yahoo.dk" style="color: inherit; text-decoration: none;">oliverjuuljensen@yahoo.dk</a></div>
-      <div class="line2">Tlf: <a href="tel:+4528499459" style="color: inherit; text-decoration: none;">28 49 94 59</a></div>
+<!-- Projekter med titel og beskrivelse -->
+<div class="projects">
+  <a href="projekt1/" class="project-box">
+    <img src="projekt1.jpg" alt="Projekt 1">
+    <div class="project-info">
+      <div class="project-title">Reseda-og lupinvej</div>
+      <div class="project-desc">Byrum skabt gennem inddragelse, fundraising & biodiversitet</div>
     </div>
-  </header>
-
-  <!-- Projekter -->
-  <div class="projects">
-    <a href="projekt1/" class="project-box">
-      <img src="projekt1.jpg" alt="Projekt 1">
-      <div class="project-top-overlay"><div class="project-title">Reseda-og lupinvej</div></div>
-    </a>
-    <a href="projekt2/" class="project-box">
-      <img src="t1.png" alt="Projekt 2">
-      <div class="project-top-overlay"><div class="project-title">Thomasminde</div></div>
-    </a>
-    <a href="projekt3/" class="project-box">
-      <img src="projekt2.jpg" alt="Projekt 3">
-      <div class="project-top-overlay"><div class="project-title">KBH SOUTH</div></div>
-    </a>
-    <a href="projekt4/" class="project-box">
-      <img src="Warm spaces.jpg" alt="Projekt 4">
-      <div class="project-top-overlay"><div class="project-title">Warm spaces</div></div>
-    </a>
-    <a href="projekt5/" class="project-box">
-      <img src="e2.jpg" alt="Projekt 5">
-      <div class="project-top-overlay"><div class="project-title">Exners plads</div></div>
-    </a>
-    <a href="projekt6/" class="project-box">
-      <img src="Coffe.jfif" alt="Projekt 6">
-      <div class="project-top-overlay"><div class="project-title">Kaffegrums</div></div>
-    </a>
-    <a href="projekt7/" class="project-box">
-      <img src="spanishmodel.jpg" alt="Model">
-      <div class="project-top-overlay"><div class="project-title">Montserrat Vayreda School </div></div>
-    </a>
-    <a href="projekt8/" class="project-box">
-      <img src="IMG_9482.JPG" alt="Møbel">
-      <div class="project-top-overlay"><div class="project-title">Møbel</div></div>
-    </a>
-    <a href="projekt9/" class="project-box">
-      <img src="Church.jpg" alt="Reuse the Church">
-      <div class="project-top-overlay"><div class="project-title">Reuse the Church</div></div>
-    </a>
-    <a href="projekt10/" class="project-box">
-      <img src="f1.jpg" alt="Frederiksbjerg Skole SV">
-      <div class="project-top-overlay"><div class="project-title">Frederiksbjerg Skole SV</div></div>
-    </a>
-    <a href="projekt11/" class="project-box">
-      <img src="Strategisk helhedsplan for Årslev samt Natura 2000.jpg" alt="Årslev">
-      <div class="project-top-overlay"><div class="project-title">Årslev</div></div>
-    </a>
-    <a href="projekt12/" class="project-box">
-      <img src="lyngby.jpg" alt="Lyngby">
-      <div class="project-top-overlay"><div class="project-title">Lyngby</div></div>
-    </a>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer" id="footer">
-    <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
-      <img src="LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
-    </a>
-  </footer>
-
-  <!-- Scroll script: header vises kun i toppen, footer vises i bunden -->
-  <script>
-    const header = document.getElementById('header');
-    const footer = document.getElementById('footer');
-
-    window.addEventListener('scroll', () => {
-      // Header: vis kun når vi er helt i toppen
-      if (window.scrollY === 0) {
-        header.style.transform = 'translateY(0)';
-      } else {
-        header.style.transform = 'translateY(-100%)';
-      }
-
-      // Footer: vis kun når vi er i bunden
-      const scrollBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 10;
-      footer.style.bottom = scrollBottom ? '0' : '-100px';
-    });
-  </script>
-</body>
-</html>
+  </a>
+  <a href="projekt2/" class="project-box">
+    <img src="t1.png" alt="Projekt 2">
+    <div class="project-info">
+      <div class="project-title">Thomasminde</div>
+      <div class="project-desc">Renovering af landsbymiljø med fokus på bæredygtighed</div>
+    </div>
+  </a>
+  <a href="projekt3/" class="project-box">
+    <img src="projekt2.jpg" alt="Projekt 3">
+    <div class="project-info">
+      <div class="project-title">KBH SOUTH</div>
+      <div class="project-desc">Urban planlægning og landskabsdesign i København</div>
+    </div>
+  </a>
+  <a href="projekt4/" class="project-box">
+    <img src="Warm spaces.jpg" alt="Projekt 4">
+    <div class="project-info">
+      <div class="project-title">Warm spaces</div>
+      <div class="project-desc">Socialt design for trygge og inkluderende byrum</div>
+    </div>
+  </a>
+  <a href="projekt5/" class="project-box">
+    <img src="e2.jpg" alt="Projekt 5">
+    <div class="project-info">
+      <div class="project-title">Exners plads</div>
+      <div class="project-desc">Byrum med fokus på rekreative aktiviteter og grønne områder</div>
+    </div>
+  </a>
+  <a href="projekt6/" class="project-box">
+    <img src="Coffe.jfif" alt="Projekt 6">
+    <div class="project-info">
+      <div class="project-title">Kaffegrums</div>
+      <div class="project-desc">Kreativt projekt med genbrug af kaffegrums i materialer</div>
+    </div>
+  </a>
+  <a href="projekt7/" class="project-box">
+    <img src="spanishmodel.jpg" alt="Projekt 7">
+    <div class="project-info">
+      <div class="project-title">Montserrat Vayreda School</div>
+      <div class="project-desc">Arkitektur- og undervisningsprojekt med fokus på fleksibilitet</div>
+    </div>
+  </a>
+  <a href="projekt8/" class="project-box">
+    <img src="IMG_9482.JPG" alt="Projekt 8">
+    <div class="project-info">
+      <div class="project-title">Møbel</div>
+      <div class="project-desc">Møbel- og materialedesign med funktionalitet og æstetik</div>
+    </div>
+  </a>
+  <a href="projekt9/" class="project-box">
+    <img src="Church.jpg" alt="Projekt 9">
+    <div class="project-info">
+      <div class="project-title">Reuse the Church</div>
+      <div class="project-desc">Genanvendelse og transformation af eksisterende bygningsværk</div>
+    </div>
+  </a>
+  <a href="projekt10/" class="project-box">
+    <img src="f1.jpg" alt="Projekt 10">
+    <div class="project-info">
+      <div class="project-title">Frederiksbjerg Skole SV</div>
+      <div class="project-desc">Skolebyggeri med fokus på fleksible læringsrum og uderum</div>
+    </div>
+  </a>
+  <a href="projekt11/" class="project-box">
+    <img src="Strategisk helhedsplan for Årslev samt Natura 2000.jpg" alt="Projekt 11">
+    <div class="project-info">
+      <div class="project-title">Årslev</div>
+      <div class="project-desc">Strategisk helhedsplan med fokus på landskabs- og byudvikling</div>
+    </div>
+  </a>
+  <a href="projekt12/" class="project-box">
+    <img src="lyngby.jpg" alt="Projekt 12">
+    <div class="project-info">
+      <div class="project-title">Lyngby</div>
+      <div class="project-desc">Bæredygtigt byplanlægningsprojekt med borgerinddragelse</div>
+    </div>
+  </a>
+</div>
