@@ -190,6 +190,8 @@
 
     @media (max-width: 768px) {
       header {
+         flex-direction: column;
+        align-items: flex-start;
         padding: 15px 30px;
       }
       .logo { height: 80px; }
@@ -206,22 +208,6 @@
     font-size: 12px;     /* mindre beskrivelse på mobil */
   }
     }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 15px;
-      }
-      .logo { height: 55px; }
-      .header-text { font-size: 8px; max-width: 100%; gap: 0.8px; }
-      .line1 { font-size: 10px; }
-      .line2 { font-size: 8px; }
-      .projects { padding: 100px 10px 80px 10px; gap: 10px; justify-content: center; }
-      .project-box { height: 150px; margin-bottom: 25px; }
-      .project-top-overlay { height: 40px; padding-left: 10px; }
-      .project-top-overlay .project-title { font-size: 14px; }
-      }
 
     
        @media (max-width: 480px) {
