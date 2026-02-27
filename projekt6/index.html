@@ -75,8 +75,14 @@
     .text-section { flex: 1; }
     .nummer { font-size: 60px; font-weight: bold; line-height: 1; margin-bottom: 10px; }
     .overskrift { font-size: 28px; font-weight: bold; }
-    .spaltetekst { column-count: 2; column-gap: 40px; font-size: 14px; line-height: 1.6; color: #333; }
-
+.spaltetekst {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
     /* Tekst efter billeder */
     .Doverskrift, .Dtekst { text-align: center; margin: 0 auto; max-width: 800px; }
     .Dtekst-bold {
