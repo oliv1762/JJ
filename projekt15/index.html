@@ -151,6 +151,10 @@
 </head>
 
 <body>
+  <div id="content">
+  <div class="loader">
+    <img src="../LOGO-T-21.png" class="pulse-img">
+  </div>
   <!-- Header -->
   <div class="header-wrapper">
     <header>
@@ -198,8 +202,8 @@
     <a href="https://www.linkedin.com/in/oliver-jensen-a1b81017a/" target="_blank">
       <img src="../LinkedIn-01.png" alt="LinkedIn" class="linkedin-icon">
     </a>
-  </footer>
-
+  </footer>    
+  </div>
   <!-- Scroll script: header vises kun i toppen, footer vises i bunden -->
   <script>
     const header = document.querySelector('.header-wrapper');
@@ -216,6 +220,13 @@
       // Footer: vis kun når vi er i bunden
       const scrollBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 10;
       footer.style.bottom = scrollBottom ? '0' : '-100px';
+    });
+  </script>
+  
+  <script>
+    window.addEventListener("load", function () {
+      document.querySelector(".loader").style.display = "none";
+      document.getElementById("content").style.display = "block";
     });
   </script>
 </body>
