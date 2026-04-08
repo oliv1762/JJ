@@ -72,12 +72,21 @@
     .line2 { font-size: 12px; color: #555; }
 
     /* Filter */
-  .filter-bar button {
-  background: none;        /* ingen baggrund */
-  border: none;            /* ingen kant */
-  padding: 0;              /* fjern padding */
-  font-family: 'Futura', sans-serif; /* samme font som header */
-  font-size: 14px;         /* beholder nuværende størrelse */
+  .filter-bar {
+  display: flex;
+  justify-content: flex-end; /* højrejusteret */
+  gap: 25px;                 /* mellemrum mellem knapper */
+  padding: 0 100px;          /* sideafstand */
+  margin-top: 40px;          /* afstand fra toppen */
+  flex-wrap: wrap;            /* bryder linje på små skærme */
+}
+
+.filter-bar button {
+  background: none;        
+  border: none;            
+  padding: 0;              
+  font-family: 'Futura', sans-serif; 
+  font-size: 14px;         
   cursor: pointer;
   opacity: 0.8;
   transition: all 0.3s ease;
