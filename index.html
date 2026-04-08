@@ -449,5 +449,34 @@
       footer.style.bottom = scrollBottom ? '0' : '-100px';
     });
   </script>
+
+  <script>
+  const filterButtons = document.querySelectorAll('.filter-bar button');
+  const projects = document.querySelectorAll('.project-box');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Fjern 'active' fra alle knapper og tilføj til den valgte
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const filter = button.dataset.filter; // fx 'bygning', 'møbel', 'helhed'
+
+      projects.forEach(project => {
+        // Hvis 'all' er valgt, vis alt
+        if(filter === 'all') {
+          project.style.display = 'inline-block';
+        } else {
+          // Tjek project's data-category
+          if(project.dataset.category === filter) {
+            project.style.display = 'inline-block';
+          } else {
+            project.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
